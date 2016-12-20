@@ -54,7 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BC9FAABD1CA1D3FC009F1261 /* SimpleVideoFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleVideoFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC9FAABD1CA1D3FC009F1261 /* Randomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Randomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC9FAAC01CA1D3FC009F1261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC9FAAC21CA1D3FC009F1261 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BC9FAAC51CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		BC9FAABE1CA1D3FC009F1261 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC9FAABD1CA1D3FC009F1261 /* SimpleVideoFilter.app */,
+				BC9FAABD1CA1D3FC009F1261 /* Randomizer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,9 +127,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC9FAABC1CA1D3FC009F1261 /* SimpleVideoFilter */ = {
+		BC9FAABC1CA1D3FC009F1261 /* Randomizer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC9FAACF1CA1D3FC009F1261 /* Build configuration list for PBXNativeTarget "SimpleVideoFilter" */;
+			buildConfigurationList = BC9FAACF1CA1D3FC009F1261 /* Build configuration list for PBXNativeTarget "Randomizer" */;
 			buildPhases = (
 				BC9FAAB91CA1D3FC009F1261 /* Sources */,
 				BC9FAABA1CA1D3FC009F1261 /* Frameworks */,
@@ -141,9 +141,9 @@
 			dependencies = (
 				DE9C8A891E09D49A007D6DE0 /* PBXTargetDependency */,
 			);
-			name = SimpleVideoFilter;
+			name = Randomizer;
 			productName = SimpleVideoFilter;
-			productReference = BC9FAABD1CA1D3FC009F1261 /* SimpleVideoFilter.app */;
+			productReference = BC9FAABD1CA1D3FC009F1261 /* Randomizer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -163,7 +163,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BC9FAAB81CA1D3FB009F1261 /* Build configuration list for PBXProject "SimpleVideoFilter" */;
+			buildConfigurationList = BC9FAAB81CA1D3FB009F1261 /* Build configuration list for PBXProject "Randomizer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -182,7 +182,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				BC9FAABC1CA1D3FC009F1261 /* SimpleVideoFilter */,
+				BC9FAABC1CA1D3FC009F1261 /* Randomizer */,
 			);
 		};
 /* End PBXProject section */
@@ -380,7 +380,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC9FAAB81CA1D3FB009F1261 /* Build configuration list for PBXProject "SimpleVideoFilter" */ = {
+		BC9FAAB81CA1D3FB009F1261 /* Build configuration list for PBXProject "Randomizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC9FAACD1CA1D3FC009F1261 /* Debug */,
@@ -389,7 +389,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC9FAACF1CA1D3FC009F1261 /* Build configuration list for PBXNativeTarget "SimpleVideoFilter" */ = {
+		BC9FAACF1CA1D3FC009F1261 /* Build configuration list for PBXNativeTarget "Randomizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC9FAAD01CA1D3FC009F1261 /* Debug */,
