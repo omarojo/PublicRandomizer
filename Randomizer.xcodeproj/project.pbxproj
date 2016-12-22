@@ -67,10 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */,
-				DE9C8A8A1E09D590007D6DE0 /* FilterChain.xcodeproj */,
 				BC9FAABF1CA1D3FC009F1261 /* Application */,
 				BCFB05911CBF1961009B2333 /* Resources */,
 				BC9FAABE1CA1D3FC009F1261 /* Products */,
+				DE9C8A8A1E09D590007D6DE0 /* FilterChain.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,6 +327,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sunsetlakesoftware.SimpleVideoFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -344,6 +345,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sunsetlakesoftware.SimpleVideoFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
