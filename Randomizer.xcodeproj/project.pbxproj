@@ -41,11 +41,11 @@
 
 /* Begin PBXFileReference section */
 		BC9FAABD1CA1D3FC009F1261 /* Randomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Randomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC9FAAC01CA1D3FC009F1261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC9FAAC21CA1D3FC009F1261 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BC9FAAC01CA1D3FC009F1261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../Randomizer/AppDelegate.swift; sourceTree = "<group>"; };
+		BC9FAAC21CA1D3FC009F1261 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../Randomizer/ViewController.swift; sourceTree = "<group>"; };
 		BC9FAAC51CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC9FAACA1CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BC9FAACC1CA1D3FC009F1261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = SimpleVideoFilter/Info.plist; sourceTree = "<group>"; };
+		BC9FAACC1CA1D3FC009F1261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Randomizer/Info.plist; sourceTree = "<group>"; };
 		DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
 		DE9C8A8A1E09D590007D6DE0 /* FilterChain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FilterChain.xcodeproj; path = ../FilterChain.xcodeproj; sourceTree = "<group>"; };
 		DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +215,7 @@
 				BC9FAAC51CA1D3FC009F1261 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../Randomizer;
 			sourceTree = "<group>";
 		};
 		BC9FAAC91CA1D3FC009F1261 /* LaunchScreen.storyboard */ = {
@@ -223,7 +224,7 @@
 				BC9FAACA1CA1D3FC009F1261 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			path = SimpleVideoFilter;
+			path = Randomizer;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -322,9 +323,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ESDVLEEEJP;
-				INFOPLIST_FILE = SimpleVideoFilter/Info.plist;
+				INFOPLIST_FILE = Randomizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sunsetlakesoftware.SimpleVideoFilter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.generateapp.randomizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -340,9 +341,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ESDVLEEEJP;
-				INFOPLIST_FILE = SimpleVideoFilter/Info.plist;
+				INFOPLIST_FILE = Randomizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sunsetlakesoftware.SimpleVideoFilter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.generateapp.randomizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;

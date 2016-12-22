@@ -1,7 +1,6 @@
 import UIKit
 import CoreImage
 import GPUImage
-import FilterChain
 import AVFoundation
 
 class ViewController: UIViewController {
