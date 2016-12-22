@@ -9,13 +9,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var faceDetectSwitch: UISwitch!
 
     let fbSize = Size(width: 640, height: 480)
-    let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyLow])
-    var shouldDetectFaces = true
-    lazy var lineGenerator: LineGenerator = {
-        let gen = LineGenerator(size: self.fbSize)
-        gen.lineWidth = 5
-        return gen
-    }()
     let saturationFilter = SaturationAdjustment()
     let blendFilter = AlphaBlend()
     var camera:Camera!
@@ -28,9 +21,7 @@ class ViewController: UIViewController {
             camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.runBenchmark = true
             camera.delegate = self
-            camera --> saturationFilter --> blendFilter --> renderView
-            lineGenerator --> blendFilter
-            shouldDetectFaces = faceDetectSwitch.isOn
+            camera --> saturationFilter --> renderView
             camera.startCapture()
         } catch {
             fatalError("Could not initialize rendering pipeline: \(error)")
@@ -41,9 +32,6 @@ class ViewController: UIViewController {
         super.viewDidLayoutSubviews()
     }
 
-    @IBAction func didSwitch(_ sender: UISwitch) {
-        shouldDetectFaces = sender.isOn
-    }
 
     @IBAction func capture(_ sender: AnyObject) {
         print("Capture")
@@ -58,10 +46,7 @@ class ViewController: UIViewController {
 
 extension ViewController: CameraDelegate {
     func didCaptureBuffer(_ sampleBuffer: CMSampleBuffer) {
-        guard shouldDetectFaces else {
-            lineGenerator.renderLines([]) // clear
-            return
-        }
+        /*
         if let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
             let attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, sampleBuffer, CMAttachmentMode(kCMAttachmentMode_ShouldPropagate))!
             let img = CIImage(cvPixelBuffer: pixelBuffer, options: attachments as? [String: AnyObject])
@@ -73,10 +58,12 @@ extension ViewController: CameraDelegate {
             }
             lineGenerator.renderLines(lines)
         }
+         */
     }
-
+/*
     func faceLines(_ bounds: CGRect) -> [Line] {
         // convert from CoreImage to GL coords
+        
         let flip = CGAffineTransform(scaleX: 1, y: -1)
         let rotate = flip.rotated(by: CGFloat(-M_PI_2))
         let translate = rotate.translatedBy(x: -1, y: -1)
@@ -98,4 +85,5 @@ extension ViewController: CameraDelegate {
                 .segment(p1:br, p2:bl),   // bottom
                 .segment(p1:bl, p2:tl)]   // left
     }
+ */
 }
