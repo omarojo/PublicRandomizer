@@ -5,27 +5,16 @@ import AVFoundation
 
 
 class ViewController: UIViewController {
-    @IBOutlet weak var renderView: RenderView!
-    @IBOutlet weak var faceDetectSwitch: UISwitch!
-
-    let fbSize = Size(width: 640, height: 480)
-    let saturationFilter = SaturationAdjustment()
-    let blendFilter = AlphaBlend()
-    var camera:Camera!
     var filterChain = FilterChain()
+    
+    @IBOutlet var renderView: RenderView!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        do {
-            camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
-            camera.runBenchmark = true
-            camera.delegate = self
-            camera --> saturationFilter --> renderView
-            camera.startCapture()
-        } catch {
-            fatalError("Could not initialize rendering pipeline: \(error)")
-        }
+        filterChain.startCameraWithView(view: renderView)
     }
 
     override func viewDidLayoutSubviews() {
@@ -34,13 +23,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func capture(_ sender: AnyObject) {
-        print("Capture")
-        do {
-            let documentsDir = try FileManager.default.url(for:.documentDirectory, in:.userDomainMask, appropriateFor:nil, create:true)
-            saturationFilter.saveNextFrameToURL(URL(string:"TestImage.png", relativeTo:documentsDir)!, format:.png)
-        } catch {
-            print("Couldn't save image: \(error)")
-        }
+        filterChain.capture()
     }
 }
 
