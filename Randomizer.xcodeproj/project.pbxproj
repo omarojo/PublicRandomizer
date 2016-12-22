@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC9FAAC11CA1D3FC009F1261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9FAAC01CA1D3FC009F1261 /* AppDelegate.swift */; };
-		BC9FAAC31CA1D3FC009F1261 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9FAAC21CA1D3FC009F1261 /* ViewController.swift */; };
 		BC9FAAC61CA1D3FC009F1261 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9FAAC41CA1D3FC009F1261 /* Main.storyboard */; };
 		BC9FAACB1CA1D3FC009F1261 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9FAAC91CA1D3FC009F1261 /* LaunchScreen.storyboard */; };
+		DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858D1E0BF23C00122748 /* AppDelegate.swift */; };
+		DE6585911E0BF23C00122748 /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858E1E0BF23C00122748 /* FilterChain.swift */; };
+		DE6585921E0BF23C00122748 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858F1E0BF23C00122748 /* ViewController.swift */; };
 		DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */; };
 		DE9C8A921E09D5AC007D6DE0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */; };
 		DE9C8A931E09D5AC007D6DE0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -41,11 +42,12 @@
 
 /* Begin PBXFileReference section */
 		BC9FAABD1CA1D3FC009F1261 /* Randomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Randomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC9FAAC01CA1D3FC009F1261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../Randomizer/AppDelegate.swift; sourceTree = "<group>"; };
-		BC9FAAC21CA1D3FC009F1261 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../Randomizer/ViewController.swift; sourceTree = "<group>"; };
 		BC9FAAC51CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC9FAACA1CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC9FAACC1CA1D3FC009F1261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Randomizer/Info.plist; sourceTree = "<group>"; };
+		DE65858D1E0BF23C00122748 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Randomizer/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		DE65858E1E0BF23C00122748 /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterChain.swift; path = Randomizer/FilterChain.swift; sourceTree = SOURCE_ROOT; };
+		DE65858F1E0BF23C00122748 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Randomizer/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
 		DE9C8A8A1E09D590007D6DE0 /* FilterChain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FilterChain.xcodeproj; path = ../FilterChain.xcodeproj; sourceTree = "<group>"; };
 		DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,8 +87,9 @@
 		BC9FAABF1CA1D3FC009F1261 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				BC9FAAC01CA1D3FC009F1261 /* AppDelegate.swift */,
-				BC9FAAC21CA1D3FC009F1261 /* ViewController.swift */,
+				DE65858D1E0BF23C00122748 /* AppDelegate.swift */,
+				DE65858E1E0BF23C00122748 /* FilterChain.swift */,
+				DE65858F1E0BF23C00122748 /* ViewController.swift */,
 				BC9FAAC41CA1D3FC009F1261 /* Main.storyboard */,
 			);
 			name = Application;
@@ -145,7 +148,7 @@
 					BC9FAABC1CA1D3FC009F1261 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = ESDVLEEEJP;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -201,8 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC9FAAC31CA1D3FC009F1261 /* ViewController.swift in Sources */,
-				BC9FAAC11CA1D3FC009F1261 /* AppDelegate.swift in Sources */,
+				DE6585921E0BF23C00122748 /* ViewController.swift in Sources */,
+				DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */,
+				DE6585911E0BF23C00122748 /* FilterChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +324,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ESDVLEEEJP;
@@ -329,6 +334,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -338,6 +344,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ESDVLEEEJP;

@@ -3,6 +3,7 @@ import CoreImage
 import GPUImage
 import AVFoundation
 
+
 class ViewController: UIViewController {
     @IBOutlet weak var renderView: RenderView!
     @IBOutlet weak var faceDetectSwitch: UISwitch!
@@ -18,7 +19,8 @@ class ViewController: UIViewController {
     let saturationFilter = SaturationAdjustment()
     let blendFilter = AlphaBlend()
     var camera:Camera!
-
+    var filterChain = FilterChain()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
