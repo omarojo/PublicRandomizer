@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC9FAAC61CA1D3FC009F1261 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9FAAC41CA1D3FC009F1261 /* Main.storyboard */; };
 		BC9FAACB1CA1D3FC009F1261 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9FAAC91CA1D3FC009F1261 /* LaunchScreen.storyboard */; };
 		DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858D1E0BF23C00122748 /* AppDelegate.swift */; };
 		DE6585911E0BF23C00122748 /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858E1E0BF23C00122748 /* FilterChain.swift */; };
 		DE6585921E0BF23C00122748 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858F1E0BF23C00122748 /* ViewController.swift */; };
+		DE65859D1E0C0E2400122748 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE65859B1E0C0E2400122748 /* Main.storyboard */; };
 		DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */; };
 		DE9C8A921E09D5AC007D6DE0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */; };
 		DE9C8A931E09D5AC007D6DE0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -42,12 +42,12 @@
 
 /* Begin PBXFileReference section */
 		BC9FAABD1CA1D3FC009F1261 /* Randomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Randomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC9FAAC51CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC9FAACA1CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC9FAACC1CA1D3FC009F1261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Randomizer/Info.plist; sourceTree = "<group>"; };
 		DE65858D1E0BF23C00122748 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Randomizer/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		DE65858E1E0BF23C00122748 /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterChain.swift; path = Randomizer/FilterChain.swift; sourceTree = SOURCE_ROOT; };
 		DE65858F1E0BF23C00122748 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Randomizer/ViewController.swift; sourceTree = SOURCE_ROOT; };
+		DE65859C1E0C0E2400122748 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Randomizer/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
 		DE9C8A8A1E09D590007D6DE0 /* FilterChain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FilterChain.xcodeproj; path = ../FilterChain.xcodeproj; sourceTree = "<group>"; };
 		DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,7 +90,7 @@
 				DE65858D1E0BF23C00122748 /* AppDelegate.swift */,
 				DE65858E1E0BF23C00122748 /* FilterChain.swift */,
 				DE65858F1E0BF23C00122748 /* ViewController.swift */,
-				BC9FAAC41CA1D3FC009F1261 /* Main.storyboard */,
+				DE65859B1E0C0E2400122748 /* Main.storyboard */,
 			);
 			name = Application;
 			path = SimpleVideoFilter;
@@ -191,9 +191,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE65859D1E0C0E2400122748 /* Main.storyboard in Resources */,
 				BC9FAACB1CA1D3FC009F1261 /* LaunchScreen.storyboard in Resources */,
 				DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */,
-				BC9FAAC61CA1D3FC009F1261 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,15 +213,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BC9FAAC41CA1D3FC009F1261 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BC9FAAC51CA1D3FC009F1261 /* Base */,
-			);
-			name = Main.storyboard;
-			path = ../Randomizer;
-			sourceTree = "<group>";
-		};
 		BC9FAAC91CA1D3FC009F1261 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -229,6 +220,14 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = Randomizer;
+			sourceTree = "<group>";
+		};
+		DE65859B1E0C0E2400122748 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE65859C1E0C0E2400122748 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

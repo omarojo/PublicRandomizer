@@ -25,6 +25,10 @@ class ViewController: UIViewController {
     @IBAction func capture(_ sender: AnyObject) {
         filterChain.capture()
     }
+    
+    @IBAction func randomizeButton(_ sender: Any) {
+        filterChain.randomizeFilterChain()
+    }
 }
 
 extension ViewController: CameraDelegate {
