@@ -23,14 +23,17 @@ public class FilterChain {
     let swirlFilter = SwirlDistortion()
     let dilationFilter = Dilation()
     
+    var activeFilters = [0, 1]
+    
     // Pass the view from the ViewController
     public func startCameraWithView(view: RenderView) {
         do {
+            var filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, blendFilter, swirlFilter, dilationFilter]
             renderView = view
             camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.runBenchmark = false
 //            camera.delegate = self
-            camera --> saturationFilter --> renderView
+            camera --> filters[activeFilters[0]] --> filters[activeFilters[1]] --> renderView
             camera.startCapture()
 
         } catch {
@@ -44,18 +47,28 @@ public class FilterChain {
             var filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, blendFilter, swirlFilter, dilationFilter]
 //            camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.stopCapture()
+            // Remove all targets from currently active filters and camera
+            camera.removeAllTargets()
             //            camera.delegate = self
-            let diceRoll = Int(arc4random_uniform(6) + 1)
-            print(diceRoll)
-            camera --> filters[diceRoll] --> renderView
+            for i in activeFilters {
+                filters[activeFilters[i]].removeAllTargets()
+            }
+            for i in activeFilters {
+                
+                activeFilters[i] = randomIndex()
+            }
+            
+            camera --> filters[activeFilters[0]] --> filters[activeFilters[1]] --> renderView
             camera.startCapture()
         } catch {
             fatalError("Could not initialize rendering pipeline: \(error)")
         }
-
-        
     }
     
+    public func randomIndex() -> Int {
+        let diceRoll = Int(arc4random_uniform(6) + 1)
+        return diceRoll
+    }
     public func capture() {
         print("Capture")
         do {
