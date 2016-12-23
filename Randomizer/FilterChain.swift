@@ -31,7 +31,7 @@ public class FilterChain {
     public func initFilters() {
         filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, blendFilter, swirlFilter, dilationFilter]
         activeFilters.append(filters[0])
-        
+        activeFilters.append(filters[1])
     }
     
     // Start the filter chain
@@ -45,7 +45,7 @@ public class FilterChain {
             camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.runBenchmark = false
 //            camera.delegate = self
-            camera --> activeFilters[0] --> renderView
+            camera --> activeFilters[0] --> activeFilters[1] --> renderView
             camera.startCapture()
 
         } catch {
@@ -82,7 +82,7 @@ public class FilterChain {
             index+=1
         }
         
-        camera --> activeFilters[0] --> renderView
+        camera --> activeFilters[0] --> activeFilters[1] --> renderView
         camera.startCapture()
     }
     
