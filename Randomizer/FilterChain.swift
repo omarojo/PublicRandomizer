@@ -23,17 +23,28 @@ public class FilterChain {
     let swirlFilter = SwirlDistortion()
     let dilationFilter = Dilation()
     
-    var activeFilters = [0, 1]
+    var activeFilters = [0] // Make the array longer for more filters
     
+    var filters = [BasicOperation]()
+//    self.initFilters()
+    
+    public func initFilters() {
+        filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, blendFilter, swirlFilter, dilationFilter]
+    }
+    
+    // Start the filter chain
+    public func start() {
+        initFilters()
+    }
     // Pass the view from the ViewController
     public func startCameraWithView(view: RenderView) {
         do {
-            var filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, blendFilter, swirlFilter, dilationFilter]
+            
             renderView = view
             camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.runBenchmark = false
 //            camera.delegate = self
-            camera --> filters[activeFilters[0]] --> filters[activeFilters[1]] --> renderView
+            camera --> filters[activeFilters[0]] --> renderView
             camera.startCapture()
 
         } catch {
@@ -44,21 +55,29 @@ public class FilterChain {
     
     public func randomizeFilterChain() {
         do {
-            var filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, blendFilter, swirlFilter, dilationFilter]
+            print("RANDOMIZING")
+            
 //            camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
+            print("stopping camera capture")
             camera.stopCapture()
             // Remove all targets from currently active filters and camera
+            print("removing targets from camera")
             camera.removeAllTargets()
+            print("target removed from camera")
             //            camera.delegate = self
+            print("length of activeFilters array is: \(activeFilters.count)")
+            print("length of filters array is: \(filters.count)")
             for i in activeFilters {
+                print("removing target from filter \(activeFilters[i])")
                 filters[activeFilters[i]].removeAllTargets()
             }
             for i in activeFilters {
-                
+                print("activating filter \(activeFilters[i])")
                 activeFilters[i] = randomIndex()
+                
             }
             
-            camera --> filters[activeFilters[0]] --> filters[activeFilters[1]] --> renderView
+            camera --> filters[activeFilters[0]] --> renderView
             camera.startCapture()
         } catch {
             fatalError("Could not initialize rendering pipeline: \(error)")

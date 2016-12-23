@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filterChain.start()
         filterChain.startCameraWithView(view: renderView)
     }
 
