@@ -23,13 +23,15 @@ public class FilterChain {
     let swirlFilter = SwirlDistortion()
     let dilationFilter = Dilation()
     
-    var activeFilters = [0] // Make the array longer for more filters
+    var activeFilters: [BasicOperation] = [BasicOperation]() // Make the array longer for more filters
     
-    var filters = [BasicOperation]()
+    var filters: [BasicOperation] = [BasicOperation]()
 //    self.initFilters()
     
     public func initFilters() {
         filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, blendFilter, swirlFilter, dilationFilter]
+        activeFilters.append(filters[0])
+        
     }
     
     // Start the filter chain
@@ -43,7 +45,7 @@ public class FilterChain {
             camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.runBenchmark = false
 //            camera.delegate = self
-            camera --> filters[activeFilters[0]] --> renderView
+            camera --> activeFilters[0] --> renderView
             camera.startCapture()
 
         } catch {
@@ -62,25 +64,34 @@ public class FilterChain {
         print("filters.count: \(filters.count)")
             
         // Remove targets from active filters
-        for i in activeFilters {
-            print("removing target from filter \(activeFilters[i])")
-//          filters[activeFilters[i]].removeAllTargets()
-        }
-            
-        // Select new active filters
-        for i in activeFilters {
-            print("activating filter \(activeFilters[i])")
-//          activeFilters[i] = randomIndex()
+        var index = 0
+        for _ in activeFilters {
+            print("removing target from filter at index \(index)")
+            activeFilters[index].removeAllTargets()
+            index+=1
         }
         
-        camera --> filters[activeFilters[0]] --> renderView
+        // Remove active filters from array
+
+            
+        // Select new active filters
+        index = 0
+        for _ in activeFilters {
+            print("activating filter at index \(index)")
+            activeFilters[index] = filters[randomIndex()]
+            index+=1
+        }
+        
+        camera --> activeFilters[0] --> renderView
         camera.startCapture()
     }
     
     public func randomIndex() -> Int {
         let diceRoll = Int(arc4random_uniform(6) + 1)
+        print("diceRoll: \(diceRoll)")
         return diceRoll
     }
+    
     public func capture() {
         print("Capture")
         do {
