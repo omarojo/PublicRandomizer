@@ -23,15 +23,18 @@ public class FilterChain {
     let swirlFilter = SwirlDistortion()
     let dilationFilter = Dilation()
     
-    var activeFilters: [BasicOperation] = [BasicOperation]() // Make the array longer for more filters
-    
-    var filters: [BasicOperation] = [BasicOperation]()
-//    self.initFilters()
+    var filters: [BasicOperation] = [BasicOperation]() // All available filters
+    var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
+    var numFilters = 3 // Number of filters in chain
     
     public func initFilters() {
         filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, blendFilter, swirlFilter, dilationFilter]
-        activeFilters.append(filters[0])
-        activeFilters.append(filters[1])
+        var i = 0
+        while i<numFilters {
+            activeFilters.append(filters[i])
+            i+=1
+        }
+   
     }
     
     // Start the filter chain
@@ -45,13 +48,25 @@ public class FilterChain {
             camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.runBenchmark = false
 //            camera.delegate = self
-            camera --> activeFilters[0] --> activeFilters[1] --> renderView
+            
+            rebuildChain()
+            
             camera.startCapture()
 
         } catch {
             fatalError("Could not initialize rendering pipeline: \(error)")
         }
 
+    }
+    
+    public func rebuildChain() {
+        camera --> activeFilters[0]
+        var i = 0
+        while i<numFilters {
+            activeFilters[i] --> activeFilters[i+1]
+            i+=1
+        }
+        activeFilters[0] --> renderView
     }
     
     public func randomizeFilterChain() {
@@ -82,7 +97,7 @@ public class FilterChain {
             index+=1
         }
         
-        camera --> activeFilters[0] --> activeFilters[1] --> renderView
+        rebuildChain()
         camera.startCapture()
     }
     
