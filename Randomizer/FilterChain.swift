@@ -19,16 +19,16 @@ public class FilterChain {
     let dotFilter = PolkaDot()
     let invertFilter = ColorInversion()
     let halftoneFilter = Halftone()
-    let blendFilter = AlphaBlend()
+//    let blendFilter = AlphaBlend()
     let swirlFilter = SwirlDistortion()
     let dilationFilter = Dilation()
     
-    var filters: [BasicOperation] = [BasicOperation]() // All available filters
+    var filters: [BasicOperation] = [BasicOperation]() // All available filters, casting as superclass to hold all filters in an array
     var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
     var numFilters = 3 // Number of filters in chain
     
     public func initFilters() {
-        filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, blendFilter, swirlFilter, dilationFilter]
+        filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, /*blendFilter,*/ swirlFilter, dilationFilter]
         var i = 0
         while i<numFilters {
             activeFilters.append(filters[i])
@@ -62,11 +62,12 @@ public class FilterChain {
     public func rebuildChain() {
         camera --> activeFilters[0]
         var i = 0
-        while i<numFilters {
+        
+        while i<numFilters-1 {
             activeFilters[i] --> activeFilters[i+1]
             i+=1
         }
-        activeFilters[0] --> renderView
+        activeFilters[numFilters-1] --> renderView
     }
     
     public func randomizeFilterChain() {
@@ -92,8 +93,9 @@ public class FilterChain {
         // Select new active filters
         index = 0
         for _ in activeFilters {
-            print("activating filter at index \(index)")
-            activeFilters[index] = filters[randomIndex()]
+            let randNum = randomIndex()
+            print("activating filter at index \(index), filter is: \(filters[randNum])")
+            activeFilters[index] = filters[randNum]
             index+=1
         }
         
