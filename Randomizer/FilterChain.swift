@@ -23,12 +23,32 @@ public class FilterChain {
     let swirlFilter = SwirlDistortion()
     let dilationFilter = Dilation()
     
+    let erosionFilter = Erosion()
+    let lowPassFilter = LowPassFilter()
+    let highPassFilter = HighPassFilter()
+    let cgaColorspaceFilter = CGAColorspaceFilter()
+    let kuwaharaFilter = KuwaharaFilter()
+    let posterizeFilter = Posterize()
+    let vignetteFilter = Vignette()
+    let zoomBlurFilter = ZoomBlur()
+    let polarPizellateFilter = PolarPixellate()
+    let pinchDistortionFilter = PinchDistortion()
+    let sphereRefractionFilter = SphereRefraction()
+    let glassSphereRefractionFilter = GlassSphereRefraction()
+    let embossFilter = EmbossFilter()
+    let toonFilter = ToonFilter()
+    let thresholdSketchFilter = ThresholdSketchFilter()
+    let tiltShiftFilter = TiltShift()
+    let iOSBlurFilter = iOSBlur()
+    let solarizeFilter = Solarize()
+    
+    
     var filters: [BasicOperation] = [BasicOperation]() // All available filters, casting as superclass to hold all filters in an array
     var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
-    var numFilters = 3 // Number of filters in chain
+    var numFilters = 7 // Number of filters in chain
     
     public func initFilters() {
-        filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, /*blendFilter,*/ swirlFilter, dilationFilter]
+        filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, /*blendFilter,*/ swirlFilter, dilationFilter, erosionFilter, lowPassFilter, highPassFilter, cgaColorspaceFilter, kuwaharaFilter, posterizeFilter, vignetteFilter, zoomBlurFilter, polarPizellateFilter, pinchDistortionFilter, sphereRefractionFilter, glassSphereRefractionFilter, embossFilter, toonFilter, thresholdSketchFilter, tiltShiftFilter, iOSBlurFilter, solarizeFilter]
         var i = 0
         while i<numFilters {
             activeFilters.append(filters[i])
