@@ -43,8 +43,8 @@ public class FilterChain {
     let solarizeFilter = Solarize()
     
     
-    var filters: [BasicOperation] = [BasicOperation]() // All available filters, casting as superclass to hold all filters in an array
-    var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
+    var filters = [AnyObject]() // All available filters, casting as superclass to hold all filters in an array
+    var activeFilters = [AnyObject]() // Currently active filters
     var numFilters = 7 // Number of filters in chain
     
     public func initFilters() {
@@ -80,14 +80,22 @@ public class FilterChain {
     }
     
     public func rebuildChain() {
-        camera --> activeFilters[0]
-        var i = 0
+        if let af = activeFilters[0] as? BasicOperation {
+            camera --> af
+        }
         
+//        var i = 0
+        /*
         while i<numFilters-1 {
-            activeFilters[i] --> activeFilters[i+1]
+            if let af = activeFilters as? BasicOperation {
+               af[i] --> af[i+1]
+            }
+            
             i+=1
         }
         activeFilters[numFilters-1] --> renderView
+ */
+        camera --> pixellateFilter --> dilationFilter --> renderView
     }
     
     public func randomizeFilterChain() {
@@ -103,7 +111,10 @@ public class FilterChain {
         var index = 0
         for _ in activeFilters {
             print("removing target from filter at index \(index)")
-            activeFilters[index].removeAllTargets()
+            if var af = activeFilters as? BasicOperation {
+                af[index].removeAllTargets()
+            }
+//            activeFilters[index].removeAllTargets()
             index+=1
         }
         
