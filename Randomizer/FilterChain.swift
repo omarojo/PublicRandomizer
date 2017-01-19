@@ -43,12 +43,12 @@ public class FilterChain {
     let solarizeFilter = Solarize()
     
     
-    var filters = [AnyObject]() // All available filters, casting as superclass to hold all filters in an array
-    var activeFilters = [AnyObject]() // Currently active filters
+    var filters: [BasicOperation] = [BasicOperation]() // All available filters, casting as superclass to hold all filters in an array
+    var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
     var numFilters = 7 // Number of filters in chain
     
     public func initFilters() {
-        filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, /*blendFilter,*/ swirlFilter, dilationFilter, erosionFilter, lowPassFilter, highPassFilter, cgaColorspaceFilter, kuwaharaFilter, posterizeFilter, vignetteFilter, zoomBlurFilter, polarPizellateFilter, pinchDistortionFilter, sphereRefractionFilter, glassSphereRefractionFilter, embossFilter, toonFilter, thresholdSketchFilter, tiltShiftFilter, iOSBlurFilter, solarizeFilter]
+        filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, /*blendFilter,*/ swirlFilter, dilationFilter, erosionFilter, /*lowPassFilter, highPassFilter,*/ cgaColorspaceFilter, kuwaharaFilter, posterizeFilter, vignetteFilter, zoomBlurFilter, polarPizellateFilter, pinchDistortionFilter, sphereRefractionFilter, glassSphereRefractionFilter, embossFilter, toonFilter, thresholdSketchFilter, /*ShiftFilter, iOSBlurFilter,*/ solarizeFilter]
         var i = 0
         while i<numFilters {
             activeFilters.append(filters[i])
@@ -80,22 +80,14 @@ public class FilterChain {
     }
     
     public func rebuildChain() {
-        if let af = activeFilters[0] as? BasicOperation {
-            camera --> af
-        }
+        camera --> activeFilters[0]
+        var i = 0
         
-//        var i = 0
-        /*
         while i<numFilters-1 {
-            if let af = activeFilters as? BasicOperation {
-               af[i] --> af[i+1]
-            }
-            
+            activeFilters[i] --> activeFilters[i+1]
             i+=1
         }
         activeFilters[numFilters-1] --> renderView
- */
-        camera --> pixellateFilter --> dilationFilter --> renderView
     }
     
     public func randomizeFilterChain() {
@@ -111,10 +103,7 @@ public class FilterChain {
         var index = 0
         for _ in activeFilters {
             print("removing target from filter at index \(index)")
-            if var af = activeFilters as? BasicOperation {
-                af[index].removeAllTargets()
-            }
-//            activeFilters[index].removeAllTargets()
+            activeFilters[index].removeAllTargets()
             index+=1
         }
         
