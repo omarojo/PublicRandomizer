@@ -113,7 +113,7 @@ public class FilterChain {
         // Select new active filters
         index = 0
         for _ in activeFilters {
-            let randNum = randomIndex()
+            let randNum = uniqueRandomIndex()
             print("activating filter at index \(index), filter is: \(filters[randNum])")
             activeFilters[index] = filters[randNum]
             index+=1
@@ -123,10 +123,38 @@ public class FilterChain {
         camera.startCapture()
     }
     
-    public func randomIndex() -> Int {
-        let diceRoll = Int(arc4random_uniform(6) + 1)
-        print("diceRoll: \(diceRoll)")
-        return diceRoll
+    private func randomIndex() -> Int {
+        let count = filters.count
+        
+        let randNum = Int(arc4random_uniform(UInt32(count)))
+        print("diceRoll: \(randNum)")
+        return randNum
+    }
+    
+    private func uniqueRandomIndex() -> Int {
+        let index = randomIndex()
+
+        var alreadySelected = true
+        while alreadySelected {
+            for filter in activeFilters {
+                if (type(of: filter) == type(of:filters[index])) {
+                    print("filter already in chain")
+                }
+                else {
+                    print("filter not in chain")
+                    alreadySelected = false
+                    break
+                }
+            }
+        }
+        
+
+  
+        
+        
+        
+        
+        return index
     }
     
     public func capture() {
