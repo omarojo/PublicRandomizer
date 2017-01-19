@@ -45,10 +45,10 @@ public class FilterChain {
     
     var filters: [BasicOperation] = [BasicOperation]() // All available filters, casting as superclass to hold all filters in an array
     var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
-    var numFilters = 7 // Number of filters in chain
+    var numFilters = 3 // Number of filters in chain
     
     public func initFilters() {
-        filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, /*blendFilter,*/ swirlFilter, dilationFilter, erosionFilter, /*lowPassFilter, highPassFilter,*/ cgaColorspaceFilter, kuwaharaFilter, posterizeFilter, vignetteFilter, zoomBlurFilter, polarPizellateFilter, pinchDistortionFilter, sphereRefractionFilter, glassSphereRefractionFilter, embossFilter, toonFilter, thresholdSketchFilter, /*ShiftFilter, iOSBlurFilter,*/ solarizeFilter]
+        filters = [saturationFilter, pixellateFilter, dotFilter]/*, invertFilter, halftoneFilter, /*blendFilter,*/ swirlFilter, dilationFilter, erosionFilter, /*lowPassFilter, highPassFilter,*/ cgaColorspaceFilter, kuwaharaFilter, posterizeFilter, vignetteFilter, zoomBlurFilter, polarPizellateFilter, pinchDistortionFilter, sphereRefractionFilter, glassSphereRefractionFilter, embossFilter, toonFilter, thresholdSketchFilter, /*ShiftFilter, iOSBlurFilter,*/ solarizeFilter]*/
         var i = 0
         while i<numFilters {
             activeFilters.append(filters[i])
@@ -114,9 +114,14 @@ public class FilterChain {
         index = 0
         for _ in activeFilters {
             let randNum = uniqueRandomIndex()
-            print("activating filter at index \(index), filter is: \(filters[randNum])")
+//            print("activating filter at index \(index), filter is: \(filters[randNum])")
             activeFilters[index] = filters[randNum]
             index+=1
+        }
+        print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++-")
+        print("Current filter chain:")
+        for filter in activeFilters {
+            print(filter)
         }
         
         rebuildChain()
@@ -127,25 +132,36 @@ public class FilterChain {
         let count = filters.count
         
         let randNum = Int(arc4random_uniform(UInt32(count)))
-        print("diceRoll: \(randNum)")
+//        print("diceRoll: \(randNum)")
         return randNum
     }
     
     private func uniqueRandomIndex() -> Int {
-        let index = randomIndex()
+        var index = 0;
 
         var alreadySelected = true
         while alreadySelected {
+            index = randomIndex()
+            print("----------------------------------------------------------------------------")
+            print("index \(index)")
             for filter in activeFilters {
-                if (type(of: filter) == type(of:filters[index])) {
-                    print("filter already in chain")
+                let activeFilterName = type(of:filter)//object_getClassName(filter)
+                let newFilterName = type(of:filters[index])//object_getClassName(filters[index])
+                print("comparing \(activeFilterName) to \(newFilterName)")
+                if (newFilterName == activeFilterName) {
+                    print("filter classes match, keep on trying")
                 }
                 else {
-                    print("filter not in chain")
+                    print("found unique filter")
                     alreadySelected = false
                     break
                 }
             }
+            // Didn't find a match, staying in while loop
+        }
+        print("Active filters: ")
+        for filter in activeFilters {
+            print(filter)
         }
         
 
