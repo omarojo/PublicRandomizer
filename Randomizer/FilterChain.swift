@@ -10,7 +10,7 @@ import GPUImage
 import AVFoundation
 
 public class FilterChain {
-    let fbSize = Size(width: 640, height: 480)
+    let fbSize = Size(width: 1080, height: 1920)
     var camera:Camera!
     var renderView:RenderView!
     
@@ -45,10 +45,10 @@ public class FilterChain {
     
     var filters: [BasicOperation] = [BasicOperation]() // All available filters, casting as superclass to hold all filters in an array
     var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
-    var numFilters = 3 // Number of filters in chain
+    var numFilters = 7 // Number of filters in chain
     
     public func initFilters() {
-        filters = [saturationFilter, pixellateFilter, dotFilter]/*, invertFilter, halftoneFilter, /*blendFilter,*/ swirlFilter, dilationFilter, erosionFilter, /*lowPassFilter, highPassFilter,*/ cgaColorspaceFilter, kuwaharaFilter, posterizeFilter, vignetteFilter, zoomBlurFilter, polarPizellateFilter, pinchDistortionFilter, sphereRefractionFilter, glassSphereRefractionFilter, embossFilter, toonFilter, thresholdSketchFilter, /*ShiftFilter, iOSBlurFilter,*/ solarizeFilter]*/
+        filters = [saturationFilter, pixellateFilter, dotFilter, invertFilter, halftoneFilter, /*blendFilter,*/ swirlFilter, dilationFilter, erosionFilter, /*lowPassFilter, highPassFilter,*/ cgaColorspaceFilter, kuwaharaFilter, posterizeFilter, vignetteFilter, zoomBlurFilter, polarPizellateFilter, pinchDistortionFilter, sphereRefractionFilter, glassSphereRefractionFilter, embossFilter, toonFilter, thresholdSketchFilter, /*ShiftFilter, iOSBlurFilter,*/ solarizeFilter]
         var i = 0
         while i<numFilters {
             activeFilters.append(filters[i])
@@ -108,7 +108,6 @@ public class FilterChain {
         }
         
         // Remove active filters from array
-
             
         // Select new active filters
         index = 0
@@ -140,34 +139,47 @@ public class FilterChain {
         var index = 0;
 
         var alreadySelected = true
+        
+        
         while alreadySelected {
             index = randomIndex()
+            var hits = 0
+            print("Trying to find unique number, current \(hits) hits")
+            let newFilterName = type(of:filters[index])//object_getClassName(filters[index])
             print("----------------------------------------------------------------------------")
             print("index \(index)")
             for filter in activeFilters {
                 let activeFilterName = type(of:filter)//object_getClassName(filter)
-                let newFilterName = type(of:filters[index])//object_getClassName(filters[index])
-                print("comparing \(activeFilterName) to \(newFilterName)")
+                print("comparing \(filter) to \(activeFilterName)")
                 if (newFilterName == activeFilterName) {
-                    print("filter classes match, keep on trying")
-                }
-                else {
-                    print("found unique filter")
-                    alreadySelected = false
-                    break
+                    hits = hits+1
+                    print("hits \(hits)")
                 }
             }
-            // Didn't find a match, staying in while loop
-        }
-        print("Active filters: ")
-        for filter in activeFilters {
-            print(filter)
-        }
-        
+            if (hits == 0) {
+                alreadySelected = false
+                // Leave the while loop
+            }
 
-  
-        
-        
+        }
+//        print("Active filters: ")
+//        for filter in activeFilters {
+//            //print(filter)
+//        }
+//        
+//
+//  
+//        
+//        var index = 0
+//        print("class name \(object_getClassName(filters[0]))");
+//        if filters is [BasicOperation] {
+//            print("something")
+//            
+//            // obj is a string array. Do something with stringArray
+//        }
+//        else {
+//            // obj is not a string array
+//        }
         
         
         return index
