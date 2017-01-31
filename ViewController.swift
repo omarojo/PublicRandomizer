@@ -19,27 +19,26 @@ class ViewController: UIViewController {
         
         
         // Do any additional setup after loading the view
-        let filterRect = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let filterRect = UIScreen.main.bounds
         let filterView = RenderView(frame: filterRect)
-        
+        self.view.addSubview(filterView)
 
-        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-        button.backgroundColor = .red
-        button.setTitle("Test Button", for: .normal)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        let captureButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+        captureButton.backgroundColor = .red
+        captureButton.setTitle("Test Button", for: .normal)
+        captureButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
-        self.view.addSubview(button)
+        self.view.addSubview(captureButton)
         
         
-//        self.view.addSubview(filterView)
-//        
-//        filterChain.start()
-//        filterChain.startCameraWithView(view: filterView)
+        filterChain.start()
+        filterChain.startCameraWithView(view: filterView)
         
     }
 
     func buttonAction(sender: UIButton!) {
         print("Button tapped")
+        filterChain.randomizeFilterChain()
     }
     
     override func didReceiveMemoryWarning() {
