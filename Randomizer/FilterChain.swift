@@ -150,7 +150,7 @@ public class FilterChain {
             print("index \(index)")
             for filter in activeFilters {
                 let activeFilterName = type(of:filter)//object_getClassName(filter)
-                print("comparing \(filter) to \(activeFilterName)")
+                print("comparing \(newFilterName) to \(activeFilterName)")
                 if (newFilterName == activeFilterName) {
                     hits = hits+1
                     print("hits \(hits)")
