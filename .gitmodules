@@ -1,0 +1,3 @@
+[submodule "FilterChain"]
+	path = FilterChain
+	url = https://github.com/hybridity/FilterChain

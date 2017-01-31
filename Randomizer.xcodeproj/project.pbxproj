@@ -8,24 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		BC9FAACB1CA1D3FC009F1261 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9FAAC91CA1D3FC009F1261 /* LaunchScreen.storyboard */; };
+		DE01486A1E412A5000918229 /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0148691E412A5000918229 /* FilterChain.swift */; };
 		DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858D1E0BF23C00122748 /* AppDelegate.swift */; };
-		DE6585911E0BF23C00122748 /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858E1E0BF23C00122748 /* FilterChain.swift */; };
 		DE6585921E0BF23C00122748 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858F1E0BF23C00122748 /* ViewController.swift */; };
 		DE65859D1E0C0E2400122748 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE65859B1E0C0E2400122748 /* Main.storyboard */; };
 		DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */; };
 		DE9C8A921E09D5AC007D6DE0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */; };
 		DE9C8A931E09D5AC007D6DE0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DE9C8A8F1E09D590007D6DE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DE9C8A8A1E09D590007D6DE0 /* FilterChain.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DE5EB9A41DD50D900049995D;
-			remoteInfo = FilterChain;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BC9FAAE11CA1FBF0009F1261 /* CopyFiles */ = {
@@ -44,12 +34,11 @@
 		BC9FAABD1CA1D3FC009F1261 /* Randomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Randomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC9FAACA1CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC9FAACC1CA1D3FC009F1261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Randomizer/Info.plist; sourceTree = "<group>"; };
+		DE0148691E412A5000918229 /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterChain.swift; path = FilterChain/FilterChain.swift; sourceTree = SOURCE_ROOT; };
 		DE65858D1E0BF23C00122748 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Randomizer/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		DE65858E1E0BF23C00122748 /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterChain.swift; path = Randomizer/FilterChain.swift; sourceTree = SOURCE_ROOT; };
 		DE65858F1E0BF23C00122748 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Randomizer/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		DE65859C1E0C0E2400122748 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Randomizer/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
-		DE9C8A8A1E09D590007D6DE0 /* FilterChain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FilterChain.xcodeproj; path = ../FilterChain.xcodeproj; sourceTree = "<group>"; };
 		DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -72,7 +61,6 @@
 				BC9FAABF1CA1D3FC009F1261 /* Application */,
 				BCFB05911CBF1961009B2333 /* Resources */,
 				BC9FAABE1CA1D3FC009F1261 /* Products */,
-				DE9C8A8A1E09D590007D6DE0 /* FilterChain.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,18 +94,10 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		DE9C8A8B1E09D590007D6DE0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DE9C8A901E09D590007D6DE0 /* libFilterChain.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		DED716321E315B7700F79D9B /* FilterChain */ = {
 			isa = PBXGroup;
 			children = (
-				DE65858E1E0BF23C00122748 /* FilterChain.swift */,
+				DE0148691E412A5000918229 /* FilterChain.swift */,
 			);
 			name = FilterChain;
 			sourceTree = "<group>";
@@ -171,28 +151,12 @@
 			mainGroup = BC9FAAB41CA1D3FB009F1261;
 			productRefGroup = BC9FAABE1CA1D3FC009F1261 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = DE9C8A8B1E09D590007D6DE0 /* Products */;
-					ProjectRef = DE9C8A8A1E09D590007D6DE0 /* FilterChain.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BC9FAABC1CA1D3FC009F1261 /* Randomizer */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		DE9C8A901E09D590007D6DE0 /* libFilterChain.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libFilterChain.a;
-			remoteRef = DE9C8A8F1E09D590007D6DE0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BC9FAABB1CA1D3FC009F1261 /* Resources */ = {
@@ -214,7 +178,7 @@
 			files = (
 				DE6585921E0BF23C00122748 /* ViewController.swift in Sources */,
 				DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */,
-				DE6585911E0BF23C00122748 /* FilterChain.swift in Sources */,
+				DE01486A1E412A5000918229 /* FilterChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
