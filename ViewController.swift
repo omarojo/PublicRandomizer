@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         
         self.view.addSubview(captureButton)
         
+//        let someOtherButton = UIButton(type: )
         
         filterChain.start()
         filterChain.startCameraWithView(view: filterView)
