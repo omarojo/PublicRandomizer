@@ -14,6 +14,7 @@
 		DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */; };
 		DE9C8A921E09D5AC007D6DE0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */; };
 		DE9C8A931E09D5AC007D6DE0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DEF4A9871E490EE3004F547B /* GPUImage2 in Resources */ = {isa = PBXBuildFile; fileRef = DEF4A9861E490EE3004F547B /* GPUImage2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,7 @@
 		DE65858D1E0BF23C00122748 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Randomizer/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
 		DE9C8A911E09D5AC007D6DE0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEF4A9861E490EE3004F547B /* GPUImage2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GPUImage2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				BC9FAABF1CA1D3FC009F1261 /* Application */,
 				BCFB05911CBF1961009B2333 /* Resources */,
 				BC9FAABE1CA1D3FC009F1261 /* Products */,
+				DEF4A9861E490EE3004F547B /* GPUImage2 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +165,7 @@
 			files = (
 				BC9FAACB1CA1D3FC009F1261 /* LaunchScreen.storyboard in Resources */,
 				DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */,
+				DEF4A9871E490EE3004F547B /* GPUImage2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

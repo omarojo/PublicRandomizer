@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 
         let captureButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
         captureButton.backgroundColor = .red
-        captureButton.setTitle("Test Button", for: .normal)
+        captureButton.setTitle("Capture", for: .normal)
         captureButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         self.view.addSubview(captureButton)
@@ -40,6 +40,7 @@ class ViewController: UIViewController {
     func buttonAction(sender: UIButton!) {
         print("Button tapped")
         filterChain.randomizeFilterChain()
+        filterChain.capture()
     }
     
     override func didReceiveMemoryWarning() {
