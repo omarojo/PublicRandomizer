@@ -23,11 +23,17 @@ class ViewController: UIViewController {
         let filterView = RenderView(frame: filterRect)
         self.view.addSubview(filterView)
 
-        let captureButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-        captureButton.backgroundColor = .red
-        captureButton.setTitle("Capture", for: .normal)
-        captureButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        let bSize = 72; // This should be an even number
+        let loc = CGRect(x: Int(UIScreen.main.bounds.width/2)-(bSize/2), y: Int(UIScreen.main.bounds.height)-Int(UIScreen.main.bounds.height/7), width: bSize, height: bSize)
+        let captureButton = UIButton(frame: loc)
         
+        captureButton.setTitle("C", for: .normal)
+        captureButton.backgroundColor = .red
+        // Make the button round
+        captureButton.layer.cornerRadius = 0.5 * captureButton.bounds.size.width
+        captureButton.clipsToBounds = true
+        
+        captureButton.addTarget(self, action: #selector(captureButtonAction), for: .touchUpInside)
         self.view.addSubview(captureButton)
         
 //        let someOtherButton = UIButton(type: )
@@ -37,7 +43,7 @@ class ViewController: UIViewController {
         
     }
 
-    func buttonAction(sender: UIButton!) {
+    func captureButtonAction(sender: UIButton!) {
         print("Button tapped")
         filterChain.randomizeFilterChain()
         filterChain.capture()
