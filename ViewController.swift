@@ -17,21 +17,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Do any additional setup after loading the view
+        
+        // Create RenderView and add it to main view
         let filterRect = UIScreen.main.bounds
         let filterView = RenderView(frame: filterRect)
         self.view.addSubview(filterView)
 
-        let bSize = 72; // This should be an even number
-        let loc = CGRect(x: Int(UIScreen.main.bounds.width/2)-(bSize/2), y: Int(UIScreen.main.bounds.height)-Int(UIScreen.main.bounds.height/7), width: bSize, height: bSize)
-        let captureButton = UIButton(frame: loc)
-        
-        captureButton.setTitle("C", for: .normal)
-        captureButton.backgroundColor = .red
-        // Make the button round
-        captureButton.layer.cornerRadius = 0.5 * captureButton.bounds.size.width
-        captureButton.clipsToBounds = true
+        // Initialize capture button
+        let captureButton = createCaptureButton()
         
         captureButton.addTarget(self, action: #selector(captureButtonAction), for: .touchUpInside)
         self.view.addSubview(captureButton)
@@ -42,7 +36,22 @@ class ViewController: UIViewController {
         filterChain.startCameraWithView(view: filterView)
         
     }
-
+    
+    // Layout and setup
+    func createCaptureButton() -> UIButton{
+        let bSize = 72; // This should be an even number
+        let loc = CGRect(x: Int(UIScreen.main.bounds.width/2)-(bSize/2), y: Int(UIScreen.main.bounds.height)-Int(UIScreen.main.bounds.height/7), width: bSize, height: bSize)
+        let captureButton = UIButton(frame: loc)
+        
+        captureButton.setTitle("C", for: .normal)
+        captureButton.backgroundColor = .red
+        // Make the button round
+        captureButton.layer.cornerRadius = 0.5 * captureButton.bounds.size.width
+        captureButton.clipsToBounds = true
+        return captureButton
+    }
+    
+    // Button actions
     func captureButtonAction(sender: UIButton!) {
         print("Button tapped")
         filterChain.randomizeFilterChain()
