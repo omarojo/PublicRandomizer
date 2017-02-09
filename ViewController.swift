@@ -12,7 +12,7 @@ import GPUImage
 class ViewController: UIViewController {
 
     var filterChain = FilterChain()
-    var renderView: RenderView!
+    let filterView = RenderView(frame: UIScreen.main.bounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +20,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view
         
         // Create RenderView and add it to main view
-        let filterRect = UIScreen.main.bounds
-        let filterView = RenderView(frame: filterRect)
         self.view.addSubview(filterView)
 
-        // Initialize capture button
+        //  Create a touch event recognizer
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.someAction (_:)))
+        self.filterView.addGestureRecognizer(gesture)
+        
+        // Create a capture button
         let captureButton = createCaptureButton()
         
         captureButton.addTarget(self, action: #selector(captureButtonAction), for: .touchUpInside)
@@ -53,9 +55,16 @@ class ViewController: UIViewController {
     
     // Button actions
     func captureButtonAction(sender: UIButton!) {
-        print("Button tapped")
-        filterChain.randomizeFilterChain()
+        print("Capture Button tapped")
+        
         filterChain.capture()
+    }
+    
+    // Touch recognizer action
+    func someAction(_ sender:UITapGestureRecognizer){
+        // do other task
+        print("Touch Event!!!, randomizing filter")
+        filterChain.randomizeFilterChain()
     }
     
     override func didReceiveMemoryWarning() {
