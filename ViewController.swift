@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
 //        let someOtherButton = UIButton(type: )
         
-        filterChain.start()
+        filterChain.startChain()
         filterChain.startCameraWithView(view: filterView)
         
     }

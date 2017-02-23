@@ -1,0 +1,10 @@
+framework module NextLevel {
+  umbrella header "NextLevel.h"
+
+  export *
+  module * { export * }
+}
+
+module NextLevel.Swift {
+    header "NextLevel-Swift.h"
+}
