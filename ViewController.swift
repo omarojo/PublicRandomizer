@@ -9,6 +9,7 @@
 import UIKit
 import GPUImage
 
+
 class ViewController: UIViewController {
 
     var filterChain = FilterChain()
@@ -16,9 +17,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view
-        
+
         // Create RenderView and add it to main view
         self.view.addSubview(filterView)
 
@@ -32,9 +31,7 @@ class ViewController: UIViewController {
         captureButton.addTarget(self, action: #selector(captureButtonAction), for: .touchUpInside)
         self.view.addSubview(captureButton)
         
-//        let someOtherButton = UIButton(type: )
-        
-        filterChain.startChain()
+        filterChain.start()
         filterChain.startCameraWithView(view: filterView)
         
     }
