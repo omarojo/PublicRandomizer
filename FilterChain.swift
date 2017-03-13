@@ -1,4 +1,4 @@
-
+//
 //  FilterChain.swift
 //  Randomizer
 //
@@ -9,6 +9,9 @@
 import GPUImage
 import AVFoundation
 import NextLevel
+
+public let NoEffectFragmentShader = "varying highp vec2 textureCoordinate;\n \n uniform sampler2D inputImageTexture;\n \n void main()\n {\n    lowp vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);\n    \n    gl_FragColor = textureColor.rgba;\n }\n "
+
 
 public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     let fbSize = Size(width: 1080, height: 1920)
@@ -48,6 +51,8 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
     var numFilters = 7 // Number of filters in chain
     
+    var out = BasicOperation.init(fragmentShader: NoEffectFragmentShader) //empty
+    
     override init () {
         super.init()
         initFilters()
@@ -67,7 +72,6 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         }
         
     }
-    
     
     // Start the filter chain
     public func startChain() {
@@ -133,30 +137,40 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             i+=1
         }
         activeFilters[numFilters-1] --> renderView
+        activeFilters[numFilters-1] --> self.out
     }
     
-    
-    // Randomize
     public func randomizeFilterChain() {
         
         print("RANDOMIZING")
         camera.stopCapture()
-        // Remove all targets from  camera
+        // Remove all targets from currently active filters and camera
         camera.removeAllTargets()
+        print("activeFilters.count: \(activeFilters.count)")
+        print("filters.count: \(filters.count)")
         
         // Remove targets from active filters
         var index = 0
         for _ in activeFilters {
+            print("removing target from filter at index \(index)")
             activeFilters[index].removeAllTargets()
             index+=1
         }
+        
+        // Remove active filters from array
         
         // Select new active filters
         index = 0
         for _ in activeFilters {
             let randNum = uniqueRandomIndex()
+            //            print("activating filter at index \(index), filter is: \(filters[randNum])")
             activeFilters[index] = filters[randNum]
             index+=1
+        }
+        print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++-")
+        print("Current filter chain:")
+        for filter in activeFilters {
+            print(filter)
         }
         
         rebuildChain()
@@ -165,7 +179,9 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     
     private func randomIndex() -> Int {
         let count = filters.count
+        
         let randNum = Int(arc4random_uniform(UInt32(count)))
+        //        print("diceRoll: \(randNum)")
         return randNum
     }
     
@@ -178,21 +194,43 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         while alreadySelected {
             index = randomIndex()
             var hits = 0
+            print("Trying to find unique number, current \(hits) hits")
             let newFilterName = type(of:filters[index])//object_getClassName(filters[index])
-            
+            print("----------------------------------------------------------------------------")
+            print("index \(index)")
             for filter in activeFilters {
-                let activeFilterName = type(of:filter)
-                
+                let activeFilterName = type(of:filter)//object_getClassName(filter)
+                print("comparing \(newFilterName) to \(activeFilterName)")
                 if (newFilterName == activeFilterName) {
                     hits = hits+1
+                    print("hits \(hits)")
                 }
             }
             if (hits == 0) {
-                // Leave while loop if no filters are the same
                 alreadySelected = false
+                // Leave the while loop
             }
             
         }
+        //        print("Active filters: ")
+        //        for filter in activeFilters {
+        //            //print(filter)
+        //        }
+        //
+        //
+        //
+        //
+        //        var index = 0
+        //        print("class name \(object_getClassName(filters[0]))");
+        //        if filters is [BasicOperation] {
+        //            print("something")
+        //
+        //            // obj is a string array. Do something with stringArray
+        //        }
+        //        else {
+        //            // obj is not a string array
+        //        }
+        
         
         return index
     }
