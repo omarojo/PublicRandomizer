@@ -15,7 +15,7 @@
 		DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */; };
 		DED1D7A61E772706008C18FC /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED1D7A31E7726F2008C18FC /* GPUImage.framework */; };
 		DED1D7A71E772714008C18FC /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DED1D7A31E7726F2008C18FC /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DED1D7A91E772783008C18FC /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED1D7A81E772783008C18FC /* FilterChain.swift */; };
+		DED1D7AB1E772A90008C18FC /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED1D7AA1E772A90008C18FC /* FilterChain.swift */; };
 		DEF4A9871E490EE3004F547B /* GPUImage2 in Resources */ = {isa = PBXBuildFile; fileRef = DEF4A9861E490EE3004F547B /* GPUImage2 */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +73,7 @@
 		DE65858D1E0BF23C00122748 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Randomizer/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
 		DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage2/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
-		DED1D7A81E772783008C18FC /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterChain.swift; path = FilterChain/FilterChain.swift; sourceTree = SOURCE_ROOT; };
+		DED1D7AA1E772A90008C18FC /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChain.swift; sourceTree = SOURCE_ROOT; };
 		DEF4A9861E490EE3004F547B /* GPUImage2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GPUImage2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,7 +145,7 @@
 		DED716321E315B7700F79D9B /* FilterChain */ = {
 			isa = PBXGroup;
 			children = (
-				DED1D7A81E772783008C18FC /* FilterChain.swift */,
+				DED1D7AA1E772A90008C18FC /* FilterChain.swift */,
 			);
 			name = FilterChain;
 			sourceTree = "<group>";
@@ -263,7 +263,7 @@
 			files = (
 				DE01486E1E41321A00918229 /* ViewController.swift in Sources */,
 				DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */,
-				DED1D7A91E772783008C18FC /* FilterChain.swift in Sources */,
+				DED1D7AB1E772A90008C18FC /* FilterChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
