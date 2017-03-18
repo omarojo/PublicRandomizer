@@ -194,16 +194,16 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         while alreadySelected {
             index = randomIndex()
             var hits = 0
-            print("Trying to find unique number, current \(hits) hits")
+          //  print("Trying to find unique number, current \(hits) hits")
             let newFilterName = type(of:filters[index])//object_getClassName(filters[index])
-            print("----------------------------------------------------------------------------")
-            print("index \(index)")
+          //  print("----------------------------------------------------------------------------")
+          //  print("index \(index)")
             for filter in activeFilters {
                 let activeFilterName = type(of:filter)//object_getClassName(filter)
-                print("comparing \(newFilterName) to \(activeFilterName)")
+             //   print("comparing \(newFilterName) to \(activeFilterName)")
                 if (newFilterName == activeFilterName) {
                     hits = hits+1
-                    print("hits \(hits)")
+                 //   print("hits \(hits)")
                 }
             }
             if (hits == 0) {
@@ -212,26 +212,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             }
             
         }
-        //        print("Active filters: ")
-        //        for filter in activeFilters {
-        //            //print(filter)
-        //        }
-        //
-        //
-        //
-        //
-        //        var index = 0
-        //        print("class name \(object_getClassName(filters[0]))");
-        //        if filters is [BasicOperation] {
-        //            print("something")
-        //
-        //            // obj is a string array. Do something with stringArray
-        //        }
-        //        else {
-        //            // obj is not a string array
-        //        }
-        
-        
+
         return index
     }
     
@@ -255,58 +236,66 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     // permission
     public func nextLevel(_ nextLevel: NextLevel, didUpdateAuthorizationStatus status: NextLevelAuthorizationStatus, forMediaType mediaType: String) {
         print("NextLevel, authorization updated for media \(mediaType) status \(status)")
-        if nextLevel.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized &&
-            nextLevel.authorizationStatus(forMediaType: AVMediaTypeAudio) == .authorized {
-            do {
-                try nextLevel.start()
-            } catch {
-                print("NextLevel, failed to start camera session")
-            }
-        } else if status == .notAuthorized {
-            // gracefully handle when audio/video is not authorized
-            print("NextLevel doesn't have authorization for audio or video")
-        }
+//        if nextLevel.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized &&
+//            nextLevel.authorizationStatus(forMediaType: AVMediaTypeAudio) == .authorized {
+//            do {
+//                try nextLevel.start()
+//            } catch {
+//                print("NextLevel, failed to start camera session")
+//            }
+//        } else if status == .notAuthorized {
+//            // gracefully handle when audio/video is not authorized
+//            print("NextLevel doesn't have authorization for audio or video")
+//        }
     }
     
     // configuration
     public func nextLevel(_ nextLevel: NextLevel, didUpdateVideoConfiguration videoConfiguration: NextLevelVideoConfiguration) {
+        print("NetLevel -> didUpdateVideoConfiguration")
     }
     
     public func nextLevel(_ nextLevel: NextLevel, didUpdateAudioConfiguration audioConfiguration: NextLevelAudioConfiguration) {
+        print("NetLevel -> didUpdateAudioConfiguration")
     }
     
     // session
     public func nextLevelSessionWillStart(_ nextLevel: NextLevel) {
-        print("nextLevelSessionWillStart")
+        print("NextLevel -> nextLevelSessionWillStart")
     }
     
     public func nextLevelSessionDidStart(_ nextLevel: NextLevel) {
-        print("nextLevelSessionDidStart")
+        print("NextLevel -> nextLevelSessionDidStart")
     }
     
     public func nextLevelSessionDidStop(_ nextLevel: NextLevel) {
-        print("nextLevelSessionDidStop")
+        print("NextLevel -> nextLevelSessionDidStop")
     }
     
     // interruption
     public func nextLevelSessionWasInterrupted(_ nextLevel: NextLevel) {
+        print("NextLevel -> nextLevelSessionWasInterrupted")
     }
     
     public func nextLevelSessionInterruptionEnded(_ nextLevel: NextLevel) {
+        print("NextLevel -> nextLevelSessionInterruptionEnded")
     }
     
     // preview
     public func nextLevelWillStartPreview(_ nextLevel: NextLevel) {
+        print("NextLevel -> nextLevelWillStartPreview")
     }
     
     public func nextLevelDidStopPreview(_ nextLevel: NextLevel) {
+        print("NextLevel -> nextLevelDidStopPreview")
     }
     
     // mode
     public func nextLevelCaptureModeWillChange(_ nextLevel: NextLevel) {
+        print("NextLevel -> nextLevelCaptureModeWillChange")
     }
     
     public func nextLevelCaptureModeDidChange(_ nextLevel: NextLevel) {
+        print("NextLevel -> nextLevelCaptureModeDidChange")
     }
     
     
@@ -314,10 +303,12 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     
     // video zoom
     public func nextLevel(_ nextLevel: NextLevel, didUpdateVideoZoomFactor videoZoomFactor: Float) {
+        print("NextLevel -> didUpdateVideoZoomFactor")
     }
     
     // video frame processing
     public func nextLevel(_ nextLevel: NextLevel, willProcessRawVideoSampleBuffer sampleBuffer: CMSampleBuffer) {
+        print("NextLevel -> willProcessRawVideoSampleBuffer")
         var thePixelBuffer : CVPixelBuffer?
         
         if let testImage = UIImage(named: "unicornSecurity.jpg") {
@@ -332,37 +323,53 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     
     // enabled by isCustomContextVideoRenderingEnabled
     public func nextLevel(_ nextLevel: NextLevel, renderToCustomContextWithImageBuffer imageBuffer: CVPixelBuffer, onQueue queue: DispatchQueue) {
-        print("renderToCustomContextWithImageBuffer --> Do something here")
+        print("NextLevel -> renderToCustomContextWithImageBuffer")
     }
     
     // video recording session
     public func nextLevel(_ nextLevel: NextLevel, didSetupVideoInSession session: NextLevelSession) {
-        //        print("setup video")
+        print("NextLevel -> didSetupVideoInSession")
+
     }
     
     public func nextLevel(_ nextLevel: NextLevel, didSetupAudioInSession session: NextLevelSession) {
-        //        print("setup audio")
+        print("NextLevel -> didSetupAudioInSession")
+
     }
     
     public func nextLevel(_ nextLevel: NextLevel, didStartClipInSession session: NextLevelSession) {
+        print("NextLevel -> didStartClipInSession")
+
     }
     
     public func nextLevel(_ nextLevel: NextLevel, didCompleteClip clip: NextLevelClip, inSession session: NextLevelSession) {
+        print("NextLevel -> didCompleteClip")
+
     }
     
     public func nextLevel(_ nextLevel: NextLevel, didAppendVideoSampleBuffer sampleBuffer: CMSampleBuffer, inSession session: NextLevelSession) {
+        print("NextLevel -> didAppendVideoSampleBuffer")
+
     }
     
     public func nextLevel(_ nextLevel: NextLevel, didAppendAudioSampleBuffer sampleBuffer: CMSampleBuffer, inSession session: NextLevelSession) {
+        print("NextLevel -> didAppendAudioSampleBuffer")
+
     }
     
     public func nextLevel(_ nextLevel: NextLevel, didSkipVideoSampleBuffer sampleBuffer: CMSampleBuffer, inSession session: NextLevelSession) {
+        print("NextLevel -> didSkipVideoSampleBuffer")
+
     }
     
     public func nextLevel(_ nextLevel: NextLevel, didSkipAudioSampleBuffer sampleBuffer: CMSampleBuffer, inSession session: NextLevelSession) {
+        print("NextLevel -> didSkipAudioSampleBuffer")
+
     }
     
     public func nextLevel(_ nextLevel: NextLevel, didCompleteSession session: NextLevelSession) {
+        print("NextLevel -> didCompleteSession")
+
         // called when a configuration time limit is specified
         //        self.endCapture()
     }
@@ -370,6 +377,8 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     // video frame photo
     
     public func nextLevel(_ nextLevel: NextLevel, didCompletePhotoCaptureFromVideoFrame photoDict: [String : Any]?) {
+        print("NextLevel -> didCompletePhotoCaptureFromVideoFrame")
+
         /*
          if let dictionary = photoDict,
          let photoData = dictionary[NextLevelPhotoJPEGKey] {
