@@ -9,6 +9,7 @@
 import GPUImage
 import AVFoundation
 import NextLevel
+import CoreMedia
 
 public let NoEffectFragmentShader = "varying highp vec2 textureCoordinate;\n \n uniform sampler2D inputImageTexture;\n \n void main()\n {\n    lowp vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);\n    \n    gl_FragColor = textureColor.rgba;\n }\n "
 
@@ -17,6 +18,8 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     let fbSize = Size(width: 1080, height: 1920)
     var camera:Camera!
     var renderView:RenderView!
+    var movieInput:MovieInput!
+    let testImage = UIImage(named: "unicornSecurity.jpg")
     
     let saturationFilter = SaturationAdjustment()
     let pixellateFilter = Pixellate()
@@ -89,7 +92,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             nextLevel.requestAuthorization(forMediaType: AVMediaTypeAudio)
         }
         
-        
+ 
         
     }
     
@@ -113,13 +116,13 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.runBenchmark = false
             //rebuildChain()
-            //camera.startCapture()
-            
-            // NextLevel implementation
+            camera.startCapture()
             renderView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             renderView.backgroundColor = UIColor.black
-            NextLevel.sharedInstance.previewLayer.frame = renderView.bounds
-            renderView.layer.addSublayer(NextLevel.sharedInstance.previewLayer)
+            
+            // NextLevel implementation
+//            NextLevel.sharedInstance.previewLayer.frame = renderView.bounds
+//            renderView.layer.addSublayer(NextLevel.sharedInstance.previewLayer)
             
         } catch {
             fatalError("Could not initialize rendering pipeline: \(error)")
@@ -142,17 +145,17 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     
     public func randomizeFilterChain() {
         
-        print("RANDOMIZING")
+        print("RANDOMIZING FILTER CHAIN")
         camera.stopCapture()
         // Remove all targets from currently active filters and camera
         camera.removeAllTargets()
-        print("activeFilters.count: \(activeFilters.count)")
-        print("filters.count: \(filters.count)")
+//        print("activeFilters.count: \(activeFilters.count)")
+//        print("filters.count: \(filters.count)")
         
         // Remove targets from active filters
         var index = 0
         for _ in activeFilters {
-            print("removing target from filter at index \(index)")
+//            print("removing target from filter at index \(index)")
             activeFilters[index].removeAllTargets()
             index+=1
         }
@@ -167,11 +170,11 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             activeFilters[index] = filters[randNum]
             index+=1
         }
-        print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++-")
-        print("Current filter chain:")
-        for filter in activeFilters {
-            print(filter)
-        }
+//        print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++-")
+//        print("Current filter chain:")
+//        for filter in activeFilters {
+//            print(filter)
+//        }
         
         rebuildChain()
         camera.startCapture()
@@ -307,23 +310,35 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     }
     
     // video frame processing
-    public func nextLevel(_ nextLevel: NextLevel, willProcessRawVideoSampleBuffer sampleBuffer: CMSampleBuffer) {
+    public func nextLevel(_ nextLevel: NextLevel,   sampleBuffer: CMSampleBuffer) {
         print("NextLevel -> willProcessRawVideoSampleBuffer")
-        var thePixelBuffer : CVPixelBuffer?
-        
-        if let testImage = UIImage(named: "unicornSecurity.jpg") {
-            thePixelBuffer = self.pixelBufferFromImage(image: testImage)
-        }
-        
-        
-        if let frame = thePixelBuffer {
-            nextLevel.videoCustomContextImageBuffer = frame
-        }
+//        var thePixelBuffer : CVPixelBuffer?
+//        
+//        if let testImage = UIImage(named: "unicornSecurity.jpg") {
+//            thePixelBuffer = self.pixelBufferFromImage(image: testImage)
+//        }
+//        
+//        
+//        if let frame = thePixelBuffer {
+//            nextLevel.videoCustomContextImageBuffer = frame
+//        }
     }
     
     // enabled by isCustomContextVideoRenderingEnabled
     public func nextLevel(_ nextLevel: NextLevel, renderToCustomContextWithImageBuffer imageBuffer: CVPixelBuffer, onQueue queue: DispatchQueue) {
         print("NextLevel -> renderToCustomContextWithImageBuffer")
+//        let ImageSource source = imageBuffer
+//
+//        imageBuffer --> filters[0]
+        let seconds : Int64 = 1
+        let preferredTimeScale : Int32 = 1
+        let duration : CMTime = CMTimeMake(seconds, preferredTimeScale)
+        
+        // I had to modify the 'process' method in GPUImage MovieInput class
+        movieInput.process(movieFrame:imageBuffer, withSampleTime:duration)
+        
+        
+        
     }
     
     // video recording session

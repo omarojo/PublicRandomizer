@@ -11,12 +11,12 @@
 		DE01486E1E41321A00918229 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE01486D1E41321A00918229 /* ViewController.swift */; };
 		DE24E23B1E5F7346006E072C /* NextLevel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE24E23A1E5F7346006E072C /* NextLevel.framework */; };
 		DE24E23C1E5F7367006E072C /* NextLevel.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE24E23A1E5F7346006E072C /* NextLevel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DE539B3C1E7DB80800920C3D /* unicornSecurity.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DE539B3B1E7DB80800920C3D /* unicornSecurity.jpg */; };
 		DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858D1E0BF23C00122748 /* AppDelegate.swift */; };
 		DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */; };
 		DED1D7A61E772706008C18FC /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED1D7A31E7726F2008C18FC /* GPUImage.framework */; };
 		DED1D7A71E772714008C18FC /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DED1D7A31E7726F2008C18FC /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DED1D7AB1E772A90008C18FC /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED1D7AA1E772A90008C18FC /* FilterChain.swift */; };
-		DEF4A9871E490EE3004F547B /* GPUImage2 in Resources */ = {isa = PBXBuildFile; fileRef = DEF4A9861E490EE3004F547B /* GPUImage2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,11 +70,11 @@
 		BC9FAACC1CA1D3FC009F1261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Randomizer/Info.plist; sourceTree = "<group>"; };
 		DE01486D1E41321A00918229 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = SOURCE_ROOT; };
 		DE24E23A1E5F7346006E072C /* NextLevel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NextLevel.framework; path = Carthage/Build/iOS/NextLevel.framework; sourceTree = "<group>"; };
+		DE539B3B1E7DB80800920C3D /* unicornSecurity.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = unicornSecurity.jpg; sourceTree = SOURCE_ROOT; };
 		DE65858D1E0BF23C00122748 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Randomizer/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
 		DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage2/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		DED1D7AA1E772A90008C18FC /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChain.swift; sourceTree = SOURCE_ROOT; };
-		DEF4A9861E490EE3004F547B /* GPUImage2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GPUImage2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,6 @@
 				BC9FAABF1CA1D3FC009F1261 /* Application */,
 				BCFB05911CBF1961009B2333 /* Resources */,
 				BC9FAABE1CA1D3FC009F1261 /* Products */,
-				DEF4A9861E490EE3004F547B /* GPUImage2 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +144,7 @@
 		DED716321E315B7700F79D9B /* FilterChain */ = {
 			isa = PBXGroup;
 			children = (
+				DE539B3B1E7DB80800920C3D /* unicornSecurity.jpg */,
 				DED1D7AA1E772A90008C18FC /* FilterChain.swift */,
 			);
 			name = FilterChain;
@@ -250,7 +250,7 @@
 			files = (
 				BC9FAACB1CA1D3FC009F1261 /* LaunchScreen.storyboard in Resources */,
 				DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */,
-				DEF4A9871E490EE3004F547B /* GPUImage2 in Resources */,
+				DE539B3C1E7DB80800920C3D /* unicornSecurity.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
