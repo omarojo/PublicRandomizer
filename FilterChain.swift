@@ -60,7 +60,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         NextLevel.sharedInstance.delegate = self
         NextLevel.sharedInstance.videoDelegate = self
         NextLevel.sharedInstance.isVideoCustomContextRenderingEnabled = true
-
+        
         
     }
     
@@ -114,7 +114,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.runBenchmark = false
             //rebuildChain()
-            camera.startCapture()
+//            camera.startCapture()
             renderView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             renderView.backgroundColor = UIColor.black
             
@@ -237,17 +237,6 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     // permission
     public func nextLevel(_ nextLevel: NextLevel, didUpdateAuthorizationStatus status: NextLevelAuthorizationStatus, forMediaType mediaType: String) {
         print("NextLevel, authorization updated for media \(mediaType) status \(status)")
-//        if nextLevel.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized &&
-//            nextLevel.authorizationStatus(forMediaType: AVMediaTypeAudio) == .authorized {
-//            do {
-//                try nextLevel.start()
-//            } catch {
-//                print("NextLevel, failed to start camera session")
-//            }
-//        } else if status == .notAuthorized {
-//            // gracefully handle when audio/video is not authorized
-//            print("NextLevel doesn't have authorization for audio or video")
-//        }
     }
     
     // configuration
@@ -310,6 +299,8 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     // video frame processing
     public func nextLevel(_ nextLevel: NextLevel,   willProcessRawVideoSampleBuffer sampleBuffer: CMSampleBuffer) {
         print("NextLevel -> willProcessRawVideoSampleBuffer")
+        movieInput.process(movieFrame: sampleBuffer)
+        
 //        var thePixelBuffer : CVPixelBuffer?
 //        
 //        if let testImage = UIImage(named: "unicornSecurity.jpg") {
