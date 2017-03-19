@@ -12,6 +12,7 @@
 		DE24E23B1E5F7346006E072C /* NextLevel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE24E23A1E5F7346006E072C /* NextLevel.framework */; };
 		DE24E23C1E5F7367006E072C /* NextLevel.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE24E23A1E5F7346006E072C /* NextLevel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE539B3C1E7DB80800920C3D /* unicornSecurity.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DE539B3B1E7DB80800920C3D /* unicornSecurity.jpg */; };
+		DE539B3F1E7F4B4400920C3D /* sample_iPod.m4v in Resources */ = {isa = PBXBuildFile; fileRef = DE539B3E1E7F4B4400920C3D /* sample_iPod.m4v */; };
 		DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858D1E0BF23C00122748 /* AppDelegate.swift */; };
 		DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */; };
 		DED1D7A61E772706008C18FC /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED1D7A31E7726F2008C18FC /* GPUImage.framework */; };
@@ -71,6 +72,7 @@
 		DE01486D1E41321A00918229 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = SOURCE_ROOT; };
 		DE24E23A1E5F7346006E072C /* NextLevel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NextLevel.framework; path = Carthage/Build/iOS/NextLevel.framework; sourceTree = "<group>"; };
 		DE539B3B1E7DB80800920C3D /* unicornSecurity.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = unicornSecurity.jpg; sourceTree = SOURCE_ROOT; };
+		DE539B3E1E7F4B4400920C3D /* sample_iPod.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample_iPod.m4v; path = GPUImage2/examples/SharedAssets/sample_iPod.m4v; sourceTree = "<group>"; };
 		DE65858D1E0BF23C00122748 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Randomizer/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
 		DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage2/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		BCFB05911CBF1961009B2333 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DE539B3E1E7F4B4400920C3D /* sample_iPod.m4v */,
 				DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */,
 				BC9FAAC91CA1D3FC009F1261 /* LaunchScreen.storyboard */,
 				BC9FAACC1CA1D3FC009F1261 /* Info.plist */,
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC9FAACB1CA1D3FC009F1261 /* LaunchScreen.storyboard in Resources */,
+				DE539B3F1E7F4B4400920C3D /* sample_iPod.m4v in Resources */,
 				DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */,
 				DE539B3C1E7DB80800920C3D /* unicornSecurity.jpg in Resources */,
 			);

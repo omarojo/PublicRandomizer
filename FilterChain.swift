@@ -56,6 +56,17 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     override init () {
         super.init()
         initFilters()
+        let bundleURL = Bundle.main.resourceURL!
+        print(bundleURL)
+        let movieURL = URL(string:"sample_iPod.m4v", relativeTo:bundleURL)!
+        print(movieURL)
+        do {
+           movieInput = try MovieInput(url:movieURL, playAtActualSpeed:true)
+        }
+        catch {
+            print("Problem loading movie")
+        }
+        movieInput.start()
         
         NextLevel.sharedInstance.delegate = self
         NextLevel.sharedInstance.videoDelegate = self
@@ -121,7 +132,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             // NextLevel implementation
             NextLevel.sharedInstance.previewLayer.frame = renderView.bounds
             renderView.layer.addSublayer(NextLevel.sharedInstance.previewLayer)
-            
+//
         } catch {
             fatalError("Could not initialize rendering pipeline: \(error)")
         }
@@ -130,7 +141,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     
     // Create chain from Camera through all Active Filters to the Render View
     public func rebuildChain() {
-        camera --> activeFilters[0]
+        movieInput --> activeFilters[0]
         var i = 0
         
         while i<numFilters-1 {
@@ -144,9 +155,10 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     public func randomizeFilterChain() {
         
         print("RANDOMIZING FILTER CHAIN")
-        camera.stopCapture()
+        //camera.stopCapture()
         // Remove all targets from currently active filters and camera
-        camera.removeAllTargets()
+   //     camera.removeAllTargets()
+       // movieInput.removeAllTargets()
 //        print("activeFilters.count: \(activeFilters.count)")
 //        print("filters.count: \(filters.count)")
         
@@ -175,7 +187,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
 //        }
         
         rebuildChain()
-        camera.startCapture()
+      //  camera.startCapture()
     }
     
     private func randomIndex() -> Int {
@@ -299,7 +311,8 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     // video frame processing
     public func nextLevel(_ nextLevel: NextLevel,   willProcessRawVideoSampleBuffer sampleBuffer: CMSampleBuffer) {
         print("NextLevel -> willProcessRawVideoSampleBuffer")
-        movieInput.process(movieFrame: sampleBuffer)
+        //movieInput?.process(movieFrame: sampleBuffer)
+        
         
 //        var thePixelBuffer : CVPixelBuffer?
 //        
@@ -319,14 +332,17 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
 //        let ImageSource source = imageBuffer
 //
 //        imageBuffer --> filters[0]
-        let seconds : Int64 = 1
-        let preferredTimeScale : Int32 = 1
-        let duration : CMTime = CMTimeMake(seconds, preferredTimeScale)
+//        let seconds : Int64 = 1
+//        let preferredTimeScale : Int32 = 1
+//        let duration : CMTime = CMTimeMake(seconds, preferredTimeScale)
         
         // I had to modify the 'process' method in GPUImage MovieInput class
-        movieInput.process(movieFrame:imageBuffer, withSampleTime:duration)
+       // movieInput.process(movieFrame:imageBuffer, withSampleTime:duration)
         
-        
+        // provide the frame back to NextLevel for recording
+        if let frame = self._availableFrameBuffer {
+            nextLevel.videoCustomContextImageBuffer = frame
+        }
         
     }
     
