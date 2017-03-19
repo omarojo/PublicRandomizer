@@ -11,9 +11,6 @@ import AVFoundation
 import NextLevel
 import CoreMedia
 
-public let NoEffectFragmentShader = "varying highp vec2 textureCoordinate;\n \n uniform sampler2D inputImageTexture;\n \n void main()\n {\n    lowp vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);\n    \n    gl_FragColor = textureColor.rgba;\n }\n "
-
-
 public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     let fbSize = Size(width: 1080, height: 1920)
     var camera:Camera!
@@ -54,7 +51,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
     var numFilters = 7 // Number of filters in chain
     
-    var out = BasicOperation.init(fragmentShader: NoEffectFragmentShader) //empty
+    var out = BasicOperation.init(fragmentShader: PassthroughFragmentShader) //empty
     
     override init () {
         super.init()
@@ -63,6 +60,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         NextLevel.sharedInstance.delegate = self
         NextLevel.sharedInstance.videoDelegate = self
         NextLevel.sharedInstance.isVideoCustomContextRenderingEnabled = true
+
         
     }
     
@@ -121,8 +119,8 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             renderView.backgroundColor = UIColor.black
             
             // NextLevel implementation
-//            NextLevel.sharedInstance.previewLayer.frame = renderView.bounds
-//            renderView.layer.addSublayer(NextLevel.sharedInstance.previewLayer)
+            NextLevel.sharedInstance.previewLayer.frame = renderView.bounds
+            renderView.layer.addSublayer(NextLevel.sharedInstance.previewLayer)
             
         } catch {
             fatalError("Could not initialize rendering pipeline: \(error)")
@@ -310,7 +308,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     }
     
     // video frame processing
-    public func nextLevel(_ nextLevel: NextLevel,   sampleBuffer: CMSampleBuffer) {
+    public func nextLevel(_ nextLevel: NextLevel,   willProcessRawVideoSampleBuffer sampleBuffer: CMSampleBuffer) {
         print("NextLevel -> willProcessRawVideoSampleBuffer")
 //        var thePixelBuffer : CVPixelBuffer?
 //        
