@@ -16,6 +16,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     var camera:Camera!
     var renderView:RenderView!
     var movieInput:MovieInput!
+    var rawOutput:RawDataOutput!
     let testImage = UIImage(named: "unicornSecurity.jpg")
     
     let saturationFilter = SaturationAdjustment()
@@ -125,13 +126,13 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             camera = try Camera(sessionPreset:AVCaptureSessionPreset640x480)
             camera.runBenchmark = false
             //rebuildChain()
-//            camera.startCapture()
+            camera.startCapture()
             renderView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             renderView.backgroundColor = UIColor.black
             
             // NextLevel implementation
-            NextLevel.sharedInstance.previewLayer.frame = renderView.bounds
-            renderView.layer.addSublayer(NextLevel.sharedInstance.previewLayer)
+//            NextLevel.sharedInstance.previewLayer.frame = renderView.bounds
+//            renderView.layer.addSublayer(NextLevel.sharedInstance.previewLayer)
 //
         } catch {
             fatalError("Could not initialize rendering pipeline: \(error)")
@@ -141,7 +142,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     
     // Create chain from Camera through all Active Filters to the Render View
     public func rebuildChain() {
-        movieInput --> activeFilters[0]
+        camera --> activeFilters[0]
         var i = 0
         
         while i<numFilters-1 {
@@ -150,14 +151,15 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         }
         activeFilters[numFilters-1] --> renderView
         activeFilters[numFilters-1] --> self.out
+        activeFilters[numFilters-1] --> rawOutput
     }
     
     public func randomizeFilterChain() {
         
         print("RANDOMIZING FILTER CHAIN")
-        //camera.stopCapture()
+        camera.stopCapture()
         // Remove all targets from currently active filters and camera
-   //     camera.removeAllTargets()
+        camera.removeAllTargets()
        // movieInput.removeAllTargets()
 //        print("activeFilters.count: \(activeFilters.count)")
 //        print("filters.count: \(filters.count)")
@@ -187,7 +189,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
 //        }
         
         rebuildChain()
-      //  camera.startCapture()
+        camera.startCapture()
     }
     
     private func randomIndex() -> Int {
@@ -340,9 +342,9 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
        // movieInput.process(movieFrame:imageBuffer, withSampleTime:duration)
         
         // provide the frame back to NextLevel for recording
-        if let frame = self._availableFrameBuffer {
-            nextLevel.videoCustomContextImageBuffer = frame
-        }
+//        if let frame = self._availableFrameBuffer {
+//            nextLevel.videoCustomContextImageBuffer = frame
+//        }
         
     }
     
