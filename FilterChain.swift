@@ -135,7 +135,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
                 let rawPtr = UnsafeMutableRawPointer(mutating: u8Ptr)
                 
                 var pixelBuffer : CVPixelBuffer?;
-                let result = CVPixelBufferCreateWithBytes(kCFAllocatorDefault,
+                _ = CVPixelBufferCreateWithBytes(kCFAllocatorDefault,
                                                           Int(frameSize.width),
                                                           Int(frameSize.height),
                                                           kCVPixelFormatType_32BGRA,
@@ -145,26 +145,16 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
                 //print(result)
                 if pixelBuffer != nil {
                     //DEBUG: Convert CVPixelBuffer back to UIImage just to see if the image is right
-//                    let pb = pixelBuffer!
-//                    var ciImage:CIImage = CIImage(cvPixelBuffer: pb, options: nil)
+                    self._availableFrameBuffer = pixelBuffer
+                    self.capture()
+//                    let pb = self._availableFrameBuffer!
+//                    let ciImage:CIImage = CIImage(cvPixelBuffer: pb, options: nil)
 //                    let temporaryContext = CIContext.init(options: nil)
 //                    let videoImage = temporaryContext.createCGImage(ciImage, from: CGRect(x:0,y:0,width:CVPixelBufferGetWidth(pb), height:CVPixelBufferGetHeight(pb)))
-//                    //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
+//                    
 //                    let returnedImg = UIImage.init(cgImage: videoImage!);
-                    
-//                    var pixelBufferImage: UIImage? = nil
-//                    if let context = self._ciContext {
-//                        if CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: .allZeros)) == kCVReturnSuccess {
-//                            let ciimage = CIImage(cvPixelBuffer: pixelBuffer)
-//                            if let cgimage = context.createCGImage(ciimage, from: CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))) {
-//                                pixelBufferImage = UIImage(cgImage: cgimage)
-//                            }
-//                            CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: .allZeros))
-//                        }
-//                    }
-//                    return pixelBufferImage
-                    NextLevel.shared.videoCustomContextImageBuffer = pixelBuffer
-                    //self._availableFrameBuffer = pixelBuffer
+                    //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
+                    var x = 1 //this does nothing
                 }
             }
         }
@@ -287,16 +277,19 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         print("Capture")
         do {
 
-            NextLevel.shared.capturePhotoFromVideo()
-//            if let pixelBuffer = self._availableFrameBuffer {
-//                let pb = pixelBuffer
-//                let ciImage:CIImage = CIImage(cvPixelBuffer: pb, options: nil)
-//                let temporaryContext = CIContext.init(options: nil)
-//                let videoImage = temporaryContext.createCGImage(ciImage, from: CGRect(x:0,y:0,width:CVPixelBufferGetWidth(pb), height:CVPixelBufferGetHeight(pb)))
-//                //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
-//                let returnedImg = UIImage.init(cgImage: videoImage!);
-//                print("taken")
-//            }
+//            NextLevel.shared.capturePhotoFromVideo()
+            if let pixelBuffer = self._availableFrameBuffer {
+//                CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags.readOnly)
+                let pb = pixelBuffer
+                let ciImage:CIImage = CIImage(cvPixelBuffer: pb, options: nil)
+                let temporaryContext = CIContext.init(options: nil)
+                let videoImage = temporaryContext.createCGImage(ciImage, from: CGRect(x:0,y:0,width:CVPixelBufferGetWidth(pb), height:CVPixelBufferGetHeight(pb)))
+                
+                let returnedImg = UIImage.init(cgImage: videoImage!);
+//                CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags.readOnly)
+                //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
+                print("taken")
+            }
             
             
            
