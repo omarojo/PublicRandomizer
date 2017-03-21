@@ -146,13 +146,12 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
                 if pixelBuffer != nil {
                     //DEBUG: Convert CVPixelBuffer back to UIImage just to see if the image is right
                     self._availableFrameBuffer = pixelBuffer
-                    self.capture()
-//                    let pb = self._availableFrameBuffer!
-//                    let ciImage:CIImage = CIImage(cvPixelBuffer: pb, options: nil)
-//                    let temporaryContext = CIContext.init(options: nil)
-//                    let videoImage = temporaryContext.createCGImage(ciImage, from: CGRect(x:0,y:0,width:CVPixelBufferGetWidth(pb), height:CVPixelBufferGetHeight(pb)))
-//                    
-//                    let returnedImg = UIImage.init(cgImage: videoImage!);
+                    let pb = self._availableFrameBuffer!
+                    let ciImage:CIImage = CIImage(cvPixelBuffer: pb, options: nil)
+                    let temporaryContext = CIContext.init(options: nil)
+                    let videoImage = temporaryContext.createCGImage(ciImage, from: CGRect(x:0,y:0,width:CVPixelBufferGetWidth(pb), height:CVPixelBufferGetHeight(pb)))
+                    
+                    let returnedImg = UIImage.init(cgImage: videoImage!);
                     //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
                     var x = 1 //this does nothing
                 }
