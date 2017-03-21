@@ -16,7 +16,8 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     let fbSize = Size(width: 1080, height: 1920)
     var camera:Camera!
     var renderView:RenderView!
-
+    
+    var customBufferInput: CustomBufferInput!
     var rawInput: RawDataInput!
     var _availableFrameBuffer: CVPixelBuffer?
     
@@ -86,6 +87,11 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     // Pass the view from the ViewController
     public func startCameraWithNLView(view: RenderView!){
         rawInput = RawDataInput.init()
+        do {
+            customBufferInput = try CustomBufferInput()
+        } catch  {
+            fatalError("Could not initialize customBufferInput: \(error)")
+        }
         self.renderView = view
         self.renderView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.renderView.backgroundColor = UIColor.black
@@ -143,10 +149,22 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
 //                    var ciImage:CIImage = CIImage(cvPixelBuffer: pb, options: nil)
 //                    let temporaryContext = CIContext.init(options: nil)
 //                    let videoImage = temporaryContext.createCGImage(ciImage, from: CGRect(x:0,y:0,width:CVPixelBufferGetWidth(pb), height:CVPixelBufferGetHeight(pb)))
-                    //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
+//                    //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
 //                    let returnedImg = UIImage.init(cgImage: videoImage!);
                     
-                    self._availableFrameBuffer = pixelBuffer
+//                    var pixelBufferImage: UIImage? = nil
+//                    if let context = self._ciContext {
+//                        if CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: .allZeros)) == kCVReturnSuccess {
+//                            let ciimage = CIImage(cvPixelBuffer: pixelBuffer)
+//                            if let cgimage = context.createCGImage(ciimage, from: CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))) {
+//                                pixelBufferImage = UIImage(cgImage: cgimage)
+//                            }
+//                            CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: .allZeros))
+//                        }
+//                    }
+//                    return pixelBufferImage
+                    NextLevel.shared.videoCustomContextImageBuffer = pixelBuffer
+                    //self._availableFrameBuffer = pixelBuffer
                 }
             }
         }
@@ -171,7 +189,8 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     // Create chain from Camera through all Active Filters to the Render View
     public func rebuildChain() {
 //        camera --> activeFilters[0]
-        rawInput --> activeFilters[0]
+//        rawInput --> activeFilters[0]
+        customBufferInput --> activeFilters[0]
         var i = 0
         
         while i<numFilters-1 {
@@ -189,7 +208,9 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         print("RANDOMIZING FILTER CHAIN")
         // camera.stopCapture()
         // Remove all targets from currently active filters and camera
-        rawInput.removeAllTargets()
+//        rawInput.removeAllTargets()
+        customBufferInput.removeAllTargets()
+        
         // movieInput.removeAllTargets()
         
 //        print("activeFilters.count: \(activeFilters.count)")
@@ -264,13 +285,21 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     
     public func capture() {
         print("Capture")
-        // UIImageWriteToSavedPhotosAlbum(<#T##image: UIImage##UIImage#>, <#T##completionTarget: Any?##Any?#>, <#T##completionSelector: Selector?##Selector?#>, <#T##contextInfo: UnsafeMutableRawPointer?##UnsafeMutableRawPointer?#>)
         do {
-//            let documentsDir = try FileManager.default.url(for:.documentDirectory, in:.userDomainMask, appropriateFor:nil, create:true)
-//            //self.saturationFilter.saveNextFrameToURL(URL(string:"TestImage.png", relativeTo:documentsDir)!, format:.png)
-//            self.filters[numFilters-1].saveNextFrameToURL(URL(string:"Randomized.png", relativeTo:documentsDir)!, format:.png)
+
             NextLevel.shared.capturePhotoFromVideo()
-           // print("saving image at \(documentsDir)")
+//            if let pixelBuffer = self._availableFrameBuffer {
+//                let pb = pixelBuffer
+//                let ciImage:CIImage = CIImage(cvPixelBuffer: pb, options: nil)
+//                let temporaryContext = CIContext.init(options: nil)
+//                let videoImage = temporaryContext.createCGImage(ciImage, from: CGRect(x:0,y:0,width:CVPixelBufferGetWidth(pb), height:CVPixelBufferGetHeight(pb)))
+//                //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
+//                let returnedImg = UIImage.init(cgImage: videoImage!);
+//                print("taken")
+//            }
+            
+            
+           
         } catch {
             print("Couldn't save image: \(error)")
         }
@@ -365,52 +394,52 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
 //        CVPixelBufferUnlockBaseAddress( imageBuffer, CVPixelBufferLockFlags(rawValue: 0) );
         
 //// TRY 2 - it works... but slow frames
-        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
-        CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
-        let lumaBaseAddress = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0)
-        let chromaBaseAddress = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 1)
-        
-        let width = CVPixelBufferGetWidth(pixelBuffer)
-        let height = CVPixelBufferGetHeight(pixelBuffer)
-        
-        let lumaBytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 0)
-        let chromaBytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 1)
-        let lumaBuffer = lumaBaseAddress?.assumingMemoryBound(to: UInt8.self)
-        let chromaBuffer = chromaBaseAddress?.assumingMemoryBound(to: UInt8.self)
-        
-        var rgbaImage = [UInt8](repeating: 0, count: 4*width*height)
-        for x in 0 ..< width {
-            for y in 0 ..< height {
-                let lumaIndex = x+y*lumaBytesPerRow
-                let chromaIndex = (y/2)*chromaBytesPerRow+(x/2)*2
-                let yp = lumaBuffer?[lumaIndex]
-                let cb = chromaBuffer?[chromaIndex]
-                let cr = chromaBuffer?[chromaIndex+1]
-                
-                let ri = Double(yp!)                                + 1.402   * (Double(cr!) - 128)
-                let gi = Double(yp!) - 0.34414 * (Double(cb!) - 128) - 0.71414 * (Double(cr!) - 128)
-                let bi = Double(yp!) + 1.772   * (Double(cb!) - 128)
-                
-                let r = UInt8(min(max(ri,0), 255))
-                let g = UInt8(min(max(gi,0), 255))
-                let b = UInt8(min(max(bi,0), 255))
-                
-                rgbaImage[(x + y * width) * 4] = b
-                rgbaImage[(x + y * width) * 4 + 1] = g
-                rgbaImage[(x + y * width) * 4 + 2] = r
-                rgbaImage[(x + y * width) * 4 + 3] = 255
-            }
-        }
-        
-        self.rawInput.uploadBytes(rgbaImage, size: Size.init(width: Float(width), height: Float(height)), pixelFormat: PixelFormat.rgba)
-        CVPixelBufferUnlockBaseAddress( pixelBuffer, CVPixelBufferLockFlags(rawValue: 0) );
-        
+//        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
+//        CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+//        let lumaBaseAddress = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0)
+//        let chromaBaseAddress = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 1)
+//        
+//        let width = CVPixelBufferGetWidth(pixelBuffer)
+//        let height = CVPixelBufferGetHeight(pixelBuffer)
+//        
+//        let lumaBytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 0)
+//        let chromaBytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 1)
+//        let lumaBuffer = lumaBaseAddress?.assumingMemoryBound(to: UInt8.self)
+//        let chromaBuffer = chromaBaseAddress?.assumingMemoryBound(to: UInt8.self)
+//        
+//        var rgbaImage = [UInt8](repeating: 0, count: 4*width*height)
+//        for x in 0 ..< width {
+//            for y in 0 ..< height {
+//                let lumaIndex = x+y*lumaBytesPerRow
+//                let chromaIndex = (y/2)*chromaBytesPerRow+(x/2)*2
+//                let yp = lumaBuffer?[lumaIndex]
+//                let cb = chromaBuffer?[chromaIndex]
+//                let cr = chromaBuffer?[chromaIndex+1]
+//                
+//                let ri = Double(yp!)                                + 1.402   * (Double(cr!) - 128)
+//                let gi = Double(yp!) - 0.34414 * (Double(cb!) - 128) - 0.71414 * (Double(cr!) - 128)
+//                let bi = Double(yp!) + 1.772   * (Double(cb!) - 128)
+//                
+//                let r = UInt8(min(max(ri,0), 255))
+//                let g = UInt8(min(max(gi,0), 255))
+//                let b = UInt8(min(max(bi,0), 255))
+//                
+//                rgbaImage[(x + y * width) * 4] = b
+//                rgbaImage[(x + y * width) * 4 + 1] = g
+//                rgbaImage[(x + y * width) * 4 + 2] = r
+//                rgbaImage[(x + y * width) * 4 + 3] = 255
+//            }
+//        }
+//        
+//        self.rawInput.uploadBytes(rgbaImage, size: Size.init(width: Float(width), height: Float(height)), pixelFormat: PixelFormat.rgba)
+//        CVPixelBufferUnlockBaseAddress( pixelBuffer, CVPixelBufferLockFlags(rawValue: 0) );
+    
+        customBufferInput.process(movieFrame: sampleBuffer)
         
         if let frame = self._availableFrameBuffer {
             nextLevel.videoCustomContextImageBuffer = frame
         }
     }
-    
     
     // enabled by isCustomContextVideoRenderingEnabled
     public func nextLevel(_ nextLevel: NextLevel, renderToCustomContextWithImageBuffer imageBuffer: CVPixelBuffer, onQueue queue: DispatchQueue) {
@@ -418,9 +447,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         
         // provide the frame back to NextLevel for recording
         if let frame = self._availableFrameBuffer {
-            DispatchQueue.main.async { //main thread just because i thought that would make it faster.. but is the same.
-                nextLevel.videoCustomContextImageBuffer = frame
-            }
+            nextLevel.videoCustomContextImageBuffer = frame
         }
         
     }

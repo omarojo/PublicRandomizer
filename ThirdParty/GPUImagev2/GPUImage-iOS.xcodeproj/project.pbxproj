@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7686FC581E49A98500742411 /* G8RawDataOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686FC571E49A98500742411 /* G8RawDataOutput.swift */; };
+		769627941E8134CA00554A4B /* CustomBufferInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769627931E8134CA00554A4B /* CustomBufferInput.swift */; };
 		BC6A13901CBB4F5600387779 /* ConvertedShaders_GLES.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A138F1CBB4F5600387779 /* ConvertedShaders_GLES.swift */; };
 		BC6A13A01CBB503900387779 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A13921CBB503900387779 /* Color.swift */; };
 		BC6A13A11CBB503900387779 /* FillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A13931CBB503900387779 /* FillMode.swift */; };
@@ -183,6 +184,7 @@
 
 /* Begin PBXFileReference section */
 		7686FC571E49A98500742411 /* G8RawDataOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = G8RawDataOutput.swift; sourceTree = "<group>"; };
+		769627931E8134CA00554A4B /* CustomBufferInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBufferInput.swift; sourceTree = "<group>"; };
 		BC6A138F1CBB4F5600387779 /* ConvertedShaders_GLES.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConvertedShaders_GLES.swift; path = Source/Operations/Shaders/ConvertedShaders_GLES.swift; sourceTree = SOURCE_ROOT; };
 		BC6A13921CBB503900387779 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Source/Color.swift; sourceTree = "<group>"; };
 		BC6A13931CBB503900387779 /* FillMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FillMode.swift; path = Source/FillMode.swift; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 				BC6A13991CBB503900387779 /* RawDataInput.swift */,
 				BCFB07981CBF4B44009B2333 /* TextureInput.swift */,
 				BCC49FB71CD6E3D900B63EEB /* MovieInput.swift */,
+				769627931E8134CA00554A4B /* CustomBufferInput.swift */,
 			);
 			name = Inputs;
 			sourceTree = "<group>";
@@ -1048,6 +1051,7 @@
 				BCFB06A61CBF284A009B2333 /* GaussianBlur.swift in Sources */,
 				BCE316FF1CA0E69800323D5B /* SerialDispatch.swift in Sources */,
 				BCFB06891CBF22F2009B2333 /* AverageLuminanceExtractor.swift in Sources */,
+				769627941E8134CA00554A4B /* CustomBufferInput.swift in Sources */,
 				BCFB07441CBF2BC1009B2333 /* SmoothToonFilter.swift in Sources */,
 				BCFB06BF1CBF28B4009B2333 /* ClosingFilter.swift in Sources */,
 				BCE317051CA0E6C300323D5B /* BasicOperation.swift in Sources */,
