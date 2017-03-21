@@ -7,47 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7696278C1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696278B1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift */; };
+		76C76C3B1E7F9D8B00E8ECB6 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C76C381E7F9D7700E8ECB6 /* GPUImage.framework */; };
+		76C76C3C1E7F9D8B00E8ECB6 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76C76C381E7F9D7700E8ECB6 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC9FAACB1CA1D3FC009F1261 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9FAAC91CA1D3FC009F1261 /* LaunchScreen.storyboard */; };
+		D3BBA487824123E998FB6220 /* Pods_Randomizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E384A92C6585D3B31E2F84EF /* Pods_Randomizer.framework */; };
 		DE01486E1E41321A00918229 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE01486D1E41321A00918229 /* ViewController.swift */; };
-		DE24E23B1E5F7346006E072C /* NextLevel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE24E23A1E5F7346006E072C /* NextLevel.framework */; };
-		DE24E23C1E5F7367006E072C /* NextLevel.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE24E23A1E5F7346006E072C /* NextLevel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE539B3C1E7DB80800920C3D /* unicornSecurity.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DE539B3B1E7DB80800920C3D /* unicornSecurity.jpg */; };
 		DE539B3F1E7F4B4400920C3D /* sample_iPod.m4v in Resources */ = {isa = PBXBuildFile; fileRef = DE539B3E1E7F4B4400920C3D /* sample_iPod.m4v */; };
 		DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65858D1E0BF23C00122748 /* AppDelegate.swift */; };
 		DE9C8A7C1E09D431007D6DE0 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */; };
-		DED1D7A61E772706008C18FC /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED1D7A31E7726F2008C18FC /* GPUImage.framework */; };
-		DED1D7A71E772714008C18FC /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DED1D7A31E7726F2008C18FC /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DED1D7AB1E772A90008C18FC /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED1D7AA1E772A90008C18FC /* FilterChain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DED1D79E1E7726F2008C18FC /* PBXContainerItemProxy */ = {
+		76C76C371E7F9D7700E8ECB6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */;
+			containerPortal = 76C76C321E7F9D7700E8ECB6 /* GPUImage-iOS.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BC6E7CAB1C39A9D8006DF678;
-			remoteInfo = GPUImage_macOS;
+			remoteGlobalIDString = BCD1B1251C66A262001F2BDC;
+			remoteInfo = GPUImage;
 		};
-		DED1D7A01E7726F2008C18FC /* PBXContainerItemProxy */ = {
+		76C76C391E7F9D7700E8ECB6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */;
+			containerPortal = 76C76C321E7F9D7700E8ECB6 /* GPUImage-iOS.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BC6E7CB51C39A9D8006DF678;
-			remoteInfo = GPUImageTests_macOS;
+			remoteGlobalIDString = BCD1B12F1C66A262001F2BDC;
+			remoteInfo = GPUImageTests;
 		};
-		DED1D7A21E7726F2008C18FC /* PBXContainerItemProxy */ = {
+		76C76C3D1E7F9D8B00E8ECB6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC9E34E91E524A2200B8604F;
-			remoteInfo = GPUImage_iOS;
-		};
-		DED1D7A41E7726F2008C18FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC9E34F11E524A2200B8604F;
-			remoteInfo = GPUImageTests_iOS;
+			containerPortal = 76C76C321E7F9D7700E8ECB6 /* GPUImage-iOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCD1B1241C66A262001F2BDC;
+			remoteInfo = GPUImage;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -58,25 +51,27 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DED1D7A71E772714008C18FC /* GPUImage.framework in CopyFiles */,
-				DE24E23C1E5F7367006E072C /* NextLevel.framework in CopyFiles */,
+				76C76C3C1E7F9D8B00E8ECB6 /* GPUImage.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7696278B1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+Extension.swift"; sourceTree = SOURCE_ROOT; };
+		76C76C321E7F9D7700E8ECB6 /* GPUImage-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "GPUImage-iOS.xcodeproj"; path = "ThirdParty/GPUImagev2/GPUImage-iOS.xcodeproj"; sourceTree = "<group>"; };
 		BC9FAABD1CA1D3FC009F1261 /* Randomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Randomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC9FAACA1CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC9FAACC1CA1D3FC009F1261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Randomizer/Info.plist; sourceTree = "<group>"; };
+		BEBB5D9413ABC5F2B56A8EFA /* Pods-Randomizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Randomizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Randomizer/Pods-Randomizer.debug.xcconfig"; sourceTree = "<group>"; };
 		DE01486D1E41321A00918229 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = SOURCE_ROOT; };
-		DE24E23A1E5F7346006E072C /* NextLevel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NextLevel.framework; path = Carthage/Build/iOS/NextLevel.framework; sourceTree = "<group>"; };
 		DE539B3B1E7DB80800920C3D /* unicornSecurity.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = unicornSecurity.jpg; sourceTree = SOURCE_ROOT; };
-		DE539B3E1E7F4B4400920C3D /* sample_iPod.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample_iPod.m4v; path = GPUImage2/examples/SharedAssets/sample_iPod.m4v; sourceTree = "<group>"; };
+		DE539B3E1E7F4B4400920C3D /* sample_iPod.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample_iPod.m4v; path = ThirdParty/GPUImagev2/sample_iPod.m4v; sourceTree = "<group>"; };
 		DE65858D1E0BF23C00122748 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Randomizer/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		DE9C8A7B1E09D431007D6DE0 /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
-		DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage2/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		DED1D7AA1E772A90008C18FC /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChain.swift; sourceTree = SOURCE_ROOT; };
+		E337047C8A6942D85145656E /* Pods-Randomizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Randomizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Randomizer/Pods-Randomizer.release.xcconfig"; sourceTree = "<group>"; };
+		E384A92C6585D3B31E2F84EF /* Pods_Randomizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Randomizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,22 +79,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DED1D7A61E772706008C18FC /* GPUImage.framework in Frameworks */,
-				DE24E23B1E5F7346006E072C /* NextLevel.framework in Frameworks */,
+				76C76C3B1E7F9D8B00E8ECB6 /* GPUImage.framework in Frameworks */,
+				D3BBA487824123E998FB6220 /* Pods_Randomizer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0522C6A1030F7DFB39217206 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BEBB5D9413ABC5F2B56A8EFA /* Pods-Randomizer.debug.xcconfig */,
+				E337047C8A6942D85145656E /* Pods-Randomizer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		76C76C331E7F9D7700E8ECB6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76C76C381E7F9D7700E8ECB6 /* GPUImage.framework */,
+				76C76C3A1E7F9D7700E8ECB6 /* GPUImageTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BC9FAAB41CA1D3FB009F1261 = {
 			isa = PBXGroup;
 			children = (
-				DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */,
-				DE24E23A1E5F7346006E072C /* NextLevel.framework */,
+				76C76C321E7F9D7700E8ECB6 /* GPUImage-iOS.xcodeproj */,
 				BC9FAABF1CA1D3FC009F1261 /* Application */,
 				BCFB05911CBF1961009B2333 /* Resources */,
 				BC9FAABE1CA1D3FC009F1261 /* Products */,
+				0522C6A1030F7DFB39217206 /* Pods */,
+				C38AA83F17665ABA782E76E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +131,7 @@
 				DE65858D1E0BF23C00122748 /* AppDelegate.swift */,
 				DE01486D1E41321A00918229 /* ViewController.swift */,
 				DED716321E315B7700F79D9B /* FilterChain */,
+				7696278B1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift */,
 			);
 			name = Application;
 			path = SimpleVideoFilter;
@@ -133,15 +148,12 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		DED1D7981E7726F2008C18FC /* Products */ = {
+		C38AA83F17665ABA782E76E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DED1D79F1E7726F2008C18FC /* GPUImage.framework */,
-				DED1D7A11E7726F2008C18FC /* GPUImageTests_macOS.xctest */,
-				DED1D7A31E7726F2008C18FC /* GPUImage.framework */,
-				DED1D7A51E7726F2008C18FC /* GPUImageTests_iOS.xctest */,
+				E384A92C6585D3B31E2F84EF /* Pods_Randomizer.framework */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DED716321E315B7700F79D9B /* FilterChain */ = {
@@ -160,14 +172,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC9FAACF1CA1D3FC009F1261 /* Build configuration list for PBXNativeTarget "Randomizer" */;
 			buildPhases = (
+				5F65252E3C78858C328AA4C1 /* [CP] Check Pods Manifest.lock */,
 				BC9FAAB91CA1D3FC009F1261 /* Sources */,
 				BC9FAABA1CA1D3FC009F1261 /* Frameworks */,
 				BC9FAABB1CA1D3FC009F1261 /* Resources */,
 				BC9FAAE11CA1FBF0009F1261 /* CopyFiles */,
+				2E5148DF0EA09D0A247D7727 /* [CP] Embed Pods Frameworks */,
+				DFAF5098189E8B4EE797CDA9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				76C76C3E1E7F9D8B00E8ECB6 /* PBXTargetDependency */,
 			);
 			name = Randomizer;
 			productName = SimpleVideoFilter;
@@ -204,8 +220,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = DED1D7981E7726F2008C18FC /* Products */;
-					ProjectRef = DED1D7971E7726F2008C18FC /* GPUImage.xcodeproj */;
+					ProductGroup = 76C76C331E7F9D7700E8ECB6 /* Products */;
+					ProjectRef = 76C76C321E7F9D7700E8ECB6 /* GPUImage-iOS.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -216,32 +232,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		DED1D79F1E7726F2008C18FC /* GPUImage.framework */ = {
+		76C76C381E7F9D7700E8ECB6 /* GPUImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GPUImage.framework;
-			remoteRef = DED1D79E1E7726F2008C18FC /* PBXContainerItemProxy */;
+			remoteRef = 76C76C371E7F9D7700E8ECB6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DED1D7A11E7726F2008C18FC /* GPUImageTests_macOS.xctest */ = {
+		76C76C3A1E7F9D7700E8ECB6 /* GPUImageTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GPUImageTests_macOS.xctest;
-			remoteRef = DED1D7A01E7726F2008C18FC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DED1D7A31E7726F2008C18FC /* GPUImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUImage.framework;
-			remoteRef = DED1D7A21E7726F2008C18FC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DED1D7A51E7726F2008C18FC /* GPUImageTests_iOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = GPUImageTests_iOS.xctest;
-			remoteRef = DED1D7A41E7726F2008C18FC /* PBXContainerItemProxy */;
+			path = GPUImageTests.xctest;
+			remoteRef = 76C76C391E7F9D7700E8ECB6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -260,18 +262,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E5148DF0EA09D0A247D7727 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Randomizer/Pods-Randomizer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F65252E3C78858C328AA4C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DFAF5098189E8B4EE797CDA9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Randomizer/Pods-Randomizer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BC9FAAB91CA1D3FC009F1261 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DE01486E1E41321A00918229 /* ViewController.swift in Sources */,
+				7696278C1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift in Sources */,
 				DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */,
 				DED1D7AB1E772A90008C18FC /* FilterChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76C76C3E1E7F9D8B00E8ECB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImage;
+			targetProxy = 76C76C3D1E7F9D8B00E8ECB6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BC9FAAC91CA1D3FC009F1261 /* LaunchScreen.storyboard */ = {
@@ -373,6 +432,7 @@
 		};
 		BC9FAAD01CA1D3FC009F1261 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEBB5D9413ABC5F2B56A8EFA /* Pods-Randomizer.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -398,6 +458,7 @@
 		};
 		BC9FAAD11CA1D3FC009F1261 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E337047C8A6942D85145656E /* Pods-Randomizer.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

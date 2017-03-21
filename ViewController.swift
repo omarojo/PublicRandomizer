@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     var filterChain = FilterChain()
     let filterView = RenderView(frame: UIScreen.main.bounds)
+//    let nLView = UIView(frame: UIScreen.main.bounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +35,9 @@ class ViewController: UIViewController {
         
 //        let someOtherButton = UIButton(type: )
         
-        filterChain.startChain()
-        filterChain.startCameraWithView(view: filterView)
-        
+//        filterChain.startChain()
+//        filterChain.startCameraWithView(view: filterView)
+        filterChain.startCameraWithNLView(view: filterView)
     }
     
     // Layout and setup
