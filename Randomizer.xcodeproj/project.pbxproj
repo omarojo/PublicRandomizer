@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7696278C1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696278B1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift */; };
 		76C76C3B1E7F9D8B00E8ECB6 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C76C381E7F9D7700E8ECB6 /* GPUImage.framework */; };
 		76C76C3C1E7F9D8B00E8ECB6 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76C76C381E7F9D7700E8ECB6 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC9FAACB1CA1D3FC009F1261 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9FAAC91CA1D3FC009F1261 /* LaunchScreen.storyboard */; };
@@ -58,7 +57,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7696278B1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		76C76C321E7F9D7700E8ECB6 /* GPUImage-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "GPUImage-iOS.xcodeproj"; path = "ThirdParty/GPUImagev2/GPUImage-iOS.xcodeproj"; sourceTree = "<group>"; };
 		BC9FAABD1CA1D3FC009F1261 /* Randomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Randomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC9FAACA1CA1D3FC009F1261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				DE65858D1E0BF23C00122748 /* AppDelegate.swift */,
 				DE01486D1E41321A00918229 /* ViewController.swift */,
 				DED716321E315B7700F79D9B /* FilterChain */,
-				7696278B1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift */,
 			);
 			name = Application;
 			path = SimpleVideoFilter;
@@ -316,7 +313,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE01486E1E41321A00918229 /* ViewController.swift in Sources */,
-				7696278C1E7FEA0800554A4B /* CMSampleBuffer+Extension.swift in Sources */,
 				DE6585901E0BF23C00122748 /* AppDelegate.swift in Sources */,
 				DED1D7AB1E772A90008C18FC /* FilterChain.swift in Sources */,
 			);
