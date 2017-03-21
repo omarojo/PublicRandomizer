@@ -71,6 +71,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         NextLevel.shared.isVideoCustomContextRenderingEnabled = true
         NextLevel.shared.videoConfiguration.preset = AVCaptureSessionPreset640x480
         NextLevel.shared.videoConfiguration.aspectRatio = .standard
+        NextLevel.shared.automaticallyUpdatesDeviceOrientation = true;
         
     }
     
@@ -93,7 +94,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
             fatalError("Could not initialize customBufferInput: \(error)")
         }
         self.renderView = view
-        self.renderView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.renderView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
         self.renderView.backgroundColor = UIColor.black
         
         startChain()
