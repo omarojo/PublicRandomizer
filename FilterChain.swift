@@ -56,7 +56,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     
     var filters: [BasicOperation] = [BasicOperation]() // All available filters, casting as superclass to hold all filters in an array
     var activeFilters: [BasicOperation] = [BasicOperation]() // Currently active filters
-    var numFilters = 3 // Number of filters in chain
+    var numFilters = 7 // Number of filters in chain
     
     var out = BasicOperation.init(fragmentShader: PassthroughFragmentShader) //empty
     var outForNextLevel = BasicOperation.init(fragmentShader: PassthroughFragmentShader) //empty
@@ -69,7 +69,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         NextLevel.shared.delegate = self
         NextLevel.shared.videoDelegate = self
         NextLevel.shared.isVideoCustomContextRenderingEnabled = true
-        NextLevel.shared.videoConfiguration.preset = AVCaptureSessionPreset1280x720
+        //NextLevel.shared.videoConfiguration.preset = AVCaptureSessionPreset1280x720
         NextLevel.shared.videoConfiguration.aspectRatio = .active
         NextLevel.shared.automaticallyUpdatesDeviceOrientation = true
         
