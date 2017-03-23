@@ -2415,7 +2415,7 @@ extension NextLevel: AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudi
             switch captureOutput {
             case videoOutput:
                 self.executeClosureAsyncOnMainQueueIfNecessary {
-                    self.videoDelegate?.nextLevel(self, willProcessRawVideoSampleBuffer: sampleBuffer)
+                       self.videoDelegate?.nextLevel(self, willProcessRawVideoSampleBuffer: sampleBuffer)
                 }
                 self._lastVideoFrame = sampleBuffer
                 if let session = self._recordingSession {

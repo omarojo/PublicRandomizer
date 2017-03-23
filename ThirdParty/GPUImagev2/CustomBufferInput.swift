@@ -22,14 +22,15 @@ public class CustomBufferInput: ImageSource {
     
     
     public func process(movieFrame frame:CMSampleBuffer) {
-        sharedImageProcessingContext.runOperationSynchronously{
+        sharedImageProcessingContext.runOperationAsynchronously{
             let currentSampleTime = CMSampleBufferGetOutputPresentationTimeStamp(frame)
             let movieFrame = CMSampleBufferGetImageBuffer(frame)!
-        
-        
+            
+            
             self.process(movieFrame:movieFrame, withSampleTime:currentSampleTime)
             CMSampleBufferInvalidate(frame)
         }
+        
     }
     
     func process(movieFrame:CVPixelBuffer, withSampleTime:CMTime) {

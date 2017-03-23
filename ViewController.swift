@@ -13,16 +13,17 @@ class ViewController: UIViewController {
 
     var filterChain = FilterChain()
     let filterView = RenderView(frame: UIScreen.main.bounds)
-//    let nLView = UIView(frame: UIScreen.main.bounds)
+    let nLView = UIView(frame: CGRect(origin: CGPoint(x:0,y:0), size: CGSize(width: UIScreen.main.bounds.width * 0.3,height: UIScreen.main.bounds.height * 0.3) ))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        filterView.frame = self.view.bounds
         // Do any additional setup after loading the view
         
         // Create RenderView and add it to main view
         self.view.addSubview(filterView)
-
+        self.view.addSubview(nLView)
         //  Create a touch event recognizer
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.someAction (_:)))
         self.filterView.addGestureRecognizer(gesture)
@@ -38,6 +39,7 @@ class ViewController: UIViewController {
 //        filterChain.startChain()
 //        filterChain.startCameraWithView(view: filterView)
         filterChain.startCameraWithNLView(view: filterView)
+        filterChain.makeNextLevelPreviewLayer(previewView: nLView)
     }
     
     // Layout and setup
@@ -73,7 +75,27 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait //this is always read twice idk why
+    }
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIInterfaceOrientation.portrait
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation == .landscapeRight {
+            print("Landscape")
+            filterView.orientation = .landscapeLeft
+        } else if UIDevice.current.orientation == .landscapeLeft {
+            print("Lanscape Left")
+            filterView.orientation = .landscapeRight
+        } else if UIDevice.current.orientation == .portrait {
+            print("Portrait")
+            filterView.orientation = .portrait
+        }else if UIDevice.current.orientation == .portraitUpsideDown {
+            print("Portrait")
+            filterView.orientation = .portraitUpsideDown
+        }
+    }
     /*
     // MARK: - Navigation
 

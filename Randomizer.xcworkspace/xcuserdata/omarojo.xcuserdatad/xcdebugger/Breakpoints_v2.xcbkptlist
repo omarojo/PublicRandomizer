@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511791707.968074"
+            timestampString = "511933545.426785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "nextLevel(_:willProcessRawVideoSampleBuffer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511791707.968074"
+            timestampString = "511933545.426785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "483"
+            endingLineNumber = "483"
             landmarkName = "nextLevel(_:renderToCustomContextWithImageBuffer:onQueue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511791707.968074"
+            timestampString = "511933545.426785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "443"
-            endingLineNumber = "443"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "nextLevel(_:renderToCustomContextWithImageBuffer:onQueue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -118,16 +118,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511791707.968074"
+            timestampString = "511933545.426785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "capture()"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "prepareOutFramesForNextLevel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511791707.968074"
+            timestampString = "511933545.426785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "prepareOutFramesForNextLevel()"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "capture()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
