@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511933545.426785"
+            timestampString = "512494373.780105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "nextLevel(_:willProcessRawVideoSampleBuffer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511935485.075874"
+            timestampString = "512494373.780105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
+            startingLineNumber = "483"
+            endingLineNumber = "483"
             landmarkName = "nextLevel(_:renderToCustomContextWithImageBuffer:onQueue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511935485.075874"
+            timestampString = "512494373.780105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "486"
-            endingLineNumber = "486"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "nextLevel(_:renderToCustomContextWithImageBuffer:onQueue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511933545.426785"
+            timestampString = "512494373.780105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "prepareOutFramesForNextLevel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FilterChain.swift"
-            timestampString = "511933545.426785"
+            timestampString = "512494373.780105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "capture()"
             landmarkType = "7">
          </BreakpointContent>

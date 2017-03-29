@@ -17,7 +17,6 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     var camera:Camera!
     var renderView:RenderView!
     
-    var customBufferInput: CustomBufferInput!
     var rawInput: RawDataInput!
     var _availableFrameBuffer: CVPixelBuffer?
     
@@ -88,12 +87,9 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     }
     // Pass the view from the ViewController
     public func startCameraWithNLView(view: RenderView!){
+        
         rawInput = RawDataInput.init()
-        do {
-            customBufferInput = try CustomBufferInput()
-        } catch  {
-            fatalError("Could not initialize customBufferInput: \(error)")
-        }
+        
         self.renderView = view
         self.renderView.autoresizingMask = [.flexibleWidth, .flexibleRightMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.renderView.fillMode = FillMode.preserveAspectRatioAndFill
@@ -137,7 +133,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         rawOutput = RawDataOutput.init()
         self.outForNextLevel.addTarget(rawOutput)
         
-        rawOutput.dataAvailableCallbackWithSize = {dataArray, frameSize in
+        rawOutput.dataAvailableCallbackWithSize = {dataArray, frameSize in //THIS IS CALLED AT THE VERY END OF THE FILTERCHAIN
             
             let numberOfBytesPerRow = frameSize.width;
             let data = Data.init(bytes: dataArray)
@@ -165,7 +161,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
 //                    
 //                    let returnedImg = UIImage.init(cgImage: videoImage!);
                     //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
-                    var x = 1 //this does nothing
+                    //var x = 1 //this does nothing
                 }
             }
         }
@@ -191,7 +187,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     public func rebuildChain() {
 //        camera --> activeFilters[0]
         rawInput --> activeFilters[0]
-//        customBufferInput --> activeFilters[0]
+
         var i = 0
         
         while i<numFilters-1 {
@@ -210,7 +206,6 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         // camera.stopCapture()
         // Remove all targets from currently active filters and camera
         rawInput.removeAllTargets()
-//        customBufferInput.removeAllTargets()
         
         // movieInput.removeAllTargets()
         
@@ -286,7 +281,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
     
     public func capture() {
         print("Capture")
-        do {
+        
             
             var pb: CVPixelBuffer? = nil
             if let pixelBuffer = self._availableFrameBuffer {
@@ -300,19 +295,13 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
                 let temporaryContext = CIContext.init(options: nil)
                 let videoImage = temporaryContext.createCGImage(ciImage, from: CGRect(x:0,y:0,width:CVPixelBufferGetWidth(pb!), height:CVPixelBufferGetHeight(pb!)))
                 
-                let returnedImg = UIImage.init(cgImage: videoImage!);
+                _ = UIImage.init(cgImage: videoImage!);
                 //                CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags.readOnly)
                 //Put a breakpoint here.. so see the image in the debugger, by pressing SPACE after selecting the variable returnedImg
                 print("taken")
                 
             }
-            
-            
-            
-           
-        } catch {
-            print("Couldn't save image: \(error)")
-        }
+        
         
     }
     // MARK: - NextLevelDelegate
@@ -447,7 +436,7 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
 //Try 3 .. only works if I comment NextLevel code to make it not use chroma/luma
         
         //http://stackoverflow.com/questions/40766672/how-to-keep-low-latency-during-the-preview-of-video-coming-from-avfoundation
-        let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
+//        let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
         
         //CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0));
         //let width = CVPixelBufferGetWidth(pixelBuffer)
@@ -464,11 +453,20 @@ public class FilterChain: NSObject, NextLevelDelegate, NextLevelVideoDelegate {
         //}
         
         //self.rawInput.uploadBytes(arr, size: Size.init(width: Float(width), height: Float(height)), pixelFormat: PixelFormat.rgba)
+        
+        let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        
+        
         self.rawInput.uploadPixelBuffer(pixelBuffer)
         
+        
+        
+
+        
+    
         //CVPixelBufferUnlockBaseAddress(pixelBuffer,CVPixelBufferLockFlags(rawValue: 0))
         
-//        customBufferInput.process(movieFrame: sampleBuffer)
+
         
         if let frame = self._availableFrameBuffer {
             nextLevel.videoCustomContextImageBuffer = frame
